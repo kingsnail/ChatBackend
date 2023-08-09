@@ -32,7 +32,11 @@ app.post('/register', (req, res) => {
   });
 });
 
-app.listen(5050, () => {
-  console.log('Server started on port 5050');
+
+const PORT = 5050;
+const IP_ADDRESS = '51.38.71.89';
+
+app.listen(PORT, IP_ADDRESS, () => {
+  console.log(`Server running at http://${IP_ADDRESS}:${PORT}/`);
 });
 
