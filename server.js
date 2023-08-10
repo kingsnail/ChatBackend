@@ -32,6 +32,9 @@ app.post('/register', (req, res) => {
   });
 });
 
+app.post('/newAgent', (req, res) => {
+   res.status(200).send("Done");
+});
 
 const PORT = 5050;
 const IP_ADDRESS = '51.38.71.89';
