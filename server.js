@@ -1,4 +1,4 @@
-import "./general_agent";
+require "./general_agent";
 
 const express = require('express');
 const mongoose = require('mongoose');
