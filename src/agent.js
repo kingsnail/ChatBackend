@@ -58,3 +58,5 @@ class Agent {
         return d;
     }
 }
+
+module.exports = Agent;
