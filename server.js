@@ -46,7 +46,7 @@ app.get('/standard-tools', (req, res) => {
 
 app.post('/drop-cell', (req, res) => {
   const receivedAgent = req.body.agent;
-  const receivedCell  = req.body.call;
+  const receivedCell  = req.body.cell;
   // Process data as needed
   // For this demo, we just return some mock data
   res.json({
