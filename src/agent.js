@@ -25,7 +25,7 @@ class Agent {
     }
     
     setInput(i) { 
-        console.log('Input is ${i}.);  
+        console.log('Input is ${i}.');  
     }
   
     execute() {
