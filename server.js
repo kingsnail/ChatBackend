@@ -44,6 +44,16 @@ app.get('/standard-tools', (req, res) => {
    res.json(standardTools);
 });
 
+app.post('/drop-cell', (req, res) => {
+  const receivedData = req.body;
+  // Process data as needed
+  // For this demo, we just return some mock data
+  res.json({
+        title: `Received: ${receivedData.name}`,
+        description: 'This is a description based on received data.'
+  });
+});
+
 const PORT = 3000;
 const IP_ADDRESS = '51.38.71.89';
 
