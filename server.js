@@ -1,4 +1,5 @@
 const GeneralAgent = require('./src/general_agent');
+const GeneratorAgent = require('./src/generator_agent');
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -51,6 +52,13 @@ app.post('/drop-cell', (req, res) => {
   const receivedAgent = req.body.agent;
   const receivedCell  = req.body.cell;
   if (receivedAgent == "standard-agent"){
+      const newAgent = new GeneralAgent(receivedAgent, receivedCell);
+      res.json({
+          uuid: newAgent.getUUID(),
+          type: receivedAgent,
+          description: 'This is a description based on received data.'
+      });
+  } else if (receivedAgent == "generator-agent"){
       const newAgent = new GeneralAgent(receivedAgent, receivedCell);
       res.json({
           uuid: newAgent.getUUID(),
