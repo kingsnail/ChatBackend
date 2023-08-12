@@ -1,4 +1,4 @@
-const GeneralAgent = require('./general_agent');
+const GeneralAgent = require('./src/general_agent');
 
 const express = require('express');
 const mongoose = require('mongoose');
