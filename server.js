@@ -33,16 +33,15 @@ app.post('/register', (req, res) => {
 });
 
 
-const tools = [
-  { id: 'ST1', name: 'Initiator' },
-  { id: 'ST2', name: 'Input Agent' },
-  { id: 'ST3', name: 'Standard Agent' },
-  { id: 'ST4', name: 'Output Agent'}
-  // ... add more users as needed
+const standardTools = [
+  { id: 'ST1', name: 'Initiator',      color: 'red'},
+  { id: 'ST2', name: 'Input Agent',    color: 'blue' },
+  { id: 'ST3', name: 'Standard Agent', color: 'green' },
+  { id: 'ST4', name: 'Output Agent',   color: 'yellow' }
 ];
 
 app.get('/standard-tools', (req, res) => {
-   res.json(tools);
+   res.json(standardTools);
 });
 
 const PORT = 3000;
