@@ -32,8 +32,17 @@ app.post('/register', (req, res) => {
   });
 });
 
-app.post('/standard-tools', (req, res) => {
-   res.status(200).send("Done");
+
+const tools = [
+  { id: 'ST1', name: 'Initiator' },
+  { id: 'ST2', name: 'Input Agent' },
+  { id: 'ST3', name: 'Standard Agent' },
+  { id: 'ST4', name: 'Output Agent'}
+  // ... add more users as needed
+];
+
+app.get('/standard-tools', (req, res) => {
+   res.json(tools);
 });
 
 const PORT = 3000;
