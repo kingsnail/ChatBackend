@@ -50,7 +50,7 @@ app.post('/drop-cell', (req, res) => {
   const receivedAgent = req.body.agent;
   const receivedCell  = req.body.cell;
   if (receivedAgent == "standard-agent"){
-      const newAgent = new agent(receivedAgent, receivedCell);
+      const newAgent = new GeneralAgent(receivedAgent, receivedCell);
       res.json({
           uuid: newAgent.getUUID(),
           description: 'This is a description based on received data.'
