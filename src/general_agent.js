@@ -8,4 +8,4 @@ class GeneralAgent extends Agent {
     }
 }
 
-module.exports.GeneralAgent;
+module.exports = GeneralAgent;
