@@ -1,4 +1,4 @@
-import './agent';
+const Agent = requires('./agent');
 
 class GeneralAgent extends Agent {
     constructor(name, displayLocation) {
@@ -7,3 +7,5 @@ class GeneralAgent extends Agent {
         console.log(`New general agent ${this.name} UUID: €{this.uuid}`);
     }
 }
+
+module.exports.GeneralAgent;
