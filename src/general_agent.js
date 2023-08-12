@@ -1,4 +1,4 @@
-const Agent = requires('./agent');
+const Agent = require('./agent');
 
 class GeneralAgent extends Agent {
     constructor(name, displayLocation) {
