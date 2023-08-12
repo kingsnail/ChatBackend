@@ -53,11 +53,13 @@ app.post('/drop-cell', (req, res) => {
       const newAgent = new GeneralAgent(receivedAgent, receivedCell);
       res.json({
           uuid: newAgent.getUUID(),
+          type: receivedAgent,
           description: 'This is a description based on received data.'
       });
   } else {
       res.json({
           uuid : 'xxxx',
+          type : receivedAgent,
           description: `Received: ${receivedAgent} in cell ${receivedCell}`,
           });
   };
