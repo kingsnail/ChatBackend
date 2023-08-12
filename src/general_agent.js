@@ -1,4 +1,5 @@
-// Parent class for generic agent type
+const Agent = require('./agent');
+
 class GeneralAgent extends Agent {
     constructor(name, displayLocation) {
         super(name, displayLocation);
