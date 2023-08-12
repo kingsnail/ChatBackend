@@ -8,4 +8,4 @@ class GeneratorAgent extends Agent {
     }
 }
 
-module.exports = GenetorAgent;
+module.exports = GeneratorAgent;
