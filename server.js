@@ -36,10 +36,11 @@ app.post('/register', (req, res) => {
 
 
 const standardTools = [
-  { id: 'ST1', name: 'Initiator',      type: 'initiator-agent', color: 'green'},
-  { id: 'ST2', name: 'Input Agent',    type: 'input-agent',     color: 'red' },
-  { id: 'ST3', name: 'Standard Agent', type: 'standard-agent',  color: 'blue' },
-  { id: 'ST4', name: 'Output Agent',   type: 'output-agent',    color: 'yellow' }
+  { id: 'ST1', name: 'Initiator',       type: 'initiator-agent', color: 'green'},
+  { id: 'ST2', name: 'Input Agent',     type: 'input-agent',     color: 'red' },
+  { id: 'ST3', name: 'Standard Agent',  type: 'standard-agent',  color: 'blue' },
+  { id: 'ST4', name: 'Generator Agent', type: 'generator-agent', color: 'blue' },
+  { id: 'ST5', name: 'Output Agent',    type: 'output-agent',    color: 'yellow' }
 ];
 
 app.get('/standard-tools', (req, res) => {
