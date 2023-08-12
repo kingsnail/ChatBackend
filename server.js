@@ -48,14 +48,17 @@ app.post('/drop-cell', (req, res) => {
   const receivedAgent = req.body.agent;
   const receivedCell  = req.body.cell;
   if (receivedAgent == "standard-agent"){
-      const newAgent = new agent();
-  }
-  // Process data as needed
-  // For this demo, we just return some mock data
-  res.json({
-        title: `Received: ${receivedAgent} in cell ${receivedCell}`,
-        description: 'This is a description based on received data.'
-  });
+      const newAgent = new agent(receivedAgent, receivedCell);
+      res.json({
+          uuid: newAgent.getUUID(),
+          description: 'This is a description based on received data.'
+      });
+  } else {
+      res.json({
+          uuid : 'xxxx',
+          description: `Received: ${receivedAgent} in cell ${receivedCell}`,
+          });
+  };
 });
 
 const PORT = 3000;
