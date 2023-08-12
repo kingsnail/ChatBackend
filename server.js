@@ -32,11 +32,11 @@ app.post('/register', (req, res) => {
   });
 });
 
-app.post('/newAgent', (req, res) => {
+app.post('/standard-tools', (req, res) => {
    res.status(200).send("Done");
 });
 
-const PORT = 5050;
+const PORT = 3000;
 const IP_ADDRESS = '51.38.71.89';
 
 app.listen(PORT, IP_ADDRESS, () => {
