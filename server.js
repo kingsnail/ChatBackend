@@ -47,6 +47,9 @@ app.get('/standard-tools', (req, res) => {
 app.post('/drop-cell', (req, res) => {
   const receivedAgent = req.body.agent;
   const receivedCell  = req.body.cell;
+  if (receivedAgent == "standard-agent"){
+      const newAgent = new agent();
+  }
   // Process data as needed
   // For this demo, we just return some mock data
   res.json({
