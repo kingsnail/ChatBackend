@@ -45,11 +45,12 @@ app.get('/standard-tools', (req, res) => {
 });
 
 app.post('/drop-cell', (req, res) => {
-  const receivedData = req.body;
+  const receivedAgent = req.body.agent;
+  const receivedCell  = req.body.call;
   // Process data as needed
   // For this demo, we just return some mock data
   res.json({
-        title: `Received: ${receivedData.name}`,
+        title: `Received: ${receivedAgent} in cell ${receivedCell}`,
         description: 'This is a description based on received data.'
   });
 });
