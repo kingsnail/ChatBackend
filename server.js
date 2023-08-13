@@ -12,7 +12,8 @@ let agentList = {};
 
 function addAgent( a ) {
     agentList[ a.getUUID()] = a;
-    console.log("AgentList=" + agentList.toString() );
+    console.log("agentList:");
+    console.log(JSON.stringify(agentList));
 }
 
 app.use(cors());
