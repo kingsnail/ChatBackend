@@ -5,6 +5,7 @@ class GeneralAgent extends Agent {
         super(name, displayLocation);
         this.agentType = "GeneralAgent";        
         console.log("New general agent " + this.name + " UUID: " + this.uuid);
+        
     }
 }
 
