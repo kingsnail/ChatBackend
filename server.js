@@ -76,7 +76,7 @@ app.post('/drop-cell', (req, res) => {
           description: 'This is a description based on received data.'
       });
   } else if (receivedAgent == "generator-agent"){
-      const newAgent = new GeneralAgent(receivedAgent, receivedCell);
+      const newAgent = new GeneratorAgent(receivedAgent, receivedCell);
       addAgent(newAgent);
       res.json({
           uuid: newAgent.getUUID(),
