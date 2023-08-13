@@ -43,6 +43,10 @@ app.post('/register', (req, res) => {
   });
 });
 
+app.post('/update-agent', (req, res) => {
+    console.log("/update-agent called");
+});
+
 app.get('/agent-state', (req, res) => {
     const agentID = req.query.agentID;
     console.log("agentID from query = " + agentID);
