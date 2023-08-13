@@ -35,6 +35,7 @@ class GeneralAgent extends Agent {
         d['systemPrompt'] = this.systemPrompt;
         d['userPrompt'] = this.userPrompt;
         d['outputPrompt'] = this.outputPrompt;
+        console.log('General Agent Save');
         return d;
     }
 
