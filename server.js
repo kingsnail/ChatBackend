@@ -46,7 +46,7 @@ app.post('/register', (req, res) => {
 
 app.post('/update-agent', (req, res) => {
     const agentUUID = req.body.uuid;
-    console.log("/update-agent called with data " + req.body.uuid);
+    console.log("/update-agent called with data " + JSON.stringify(req.body));
     agentList[agentUUID].setName(req.body.name);
     agentList[agentUUID].setSystemPrompt(req.body.systemPrompt);
     agentList[agentUUID].setUserPrompt(req.body.userPrompt);
