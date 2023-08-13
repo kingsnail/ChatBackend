@@ -10,6 +10,11 @@ const app = express();
 
 let agentList = {};
 
+function addAgent( a ) {
+    agentList[ a.getUUID()] = a;
+    console.log("AgentList=" + agentList );
+}
+
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -60,7 +65,7 @@ app.post('/drop-cell', (req, res) => {
   const receivedCell  = req.body.cell;
   if (receivedAgent == "standard-agent"){
       const newAgent = new GeneralAgent(receivedAgent, receivedCell);
-      agentList[newAgent.getUUID()] = newAgent;
+      addAgent(newAgent);
       res.json({
           uuid: newAgent.getUUID(),
           type: receivedAgent,
@@ -68,7 +73,7 @@ app.post('/drop-cell', (req, res) => {
       });
   } else if (receivedAgent == "generator-agent"){
       const newAgent = new GeneralAgent(receivedAgent, receivedCell);
-      agentList[newAgent.getUUID()] = newAgent;
+      addAgent(newAgent);
       res.json({
           uuid: newAgent.getUUID(),
           type: receivedAgent,
