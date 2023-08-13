@@ -47,8 +47,9 @@ app.get('/agent-state', (req, res) => {
     const agentID = req.query.agentID;
     console.log("agentID from query = " + agentID);
     const agentState = agentList[agentID].save();
-    console.log("agentState=" + JSON.stringify(agentState));
-    res.json(agentState);
+    const agentStateJSON = JSON.stringify(agentState);
+    console.log("agentState=" + agentStateJSON);
+    res.json(agentStateJSON);
 });
 
 const standardTools = [
