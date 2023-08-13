@@ -8,6 +8,8 @@ const cors = require('cors');
 
 const app = express();
 
+let agentList = {};
+
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -35,6 +37,11 @@ app.post('/register', (req, res) => {
   });
 });
 
+app.get('/agent-state', (req, res) => {
+    const agentID = req.body.agentID;
+    const agentState = agentList[agentID].save();
+    res.json(agentState);
+});
 
 const standardTools = [
   { id: 'ST1', name: 'Initiator',       type: 'initiator-agent', color: 'green'},
@@ -53,6 +60,7 @@ app.post('/drop-cell', (req, res) => {
   const receivedCell  = req.body.cell;
   if (receivedAgent == "standard-agent"){
       const newAgent = new GeneralAgent(receivedAgent, receivedCell);
+      agentList[newAgent.getUUID()] = newAgent;
       res.json({
           uuid: newAgent.getUUID(),
           type: receivedAgent,
@@ -60,6 +68,7 @@ app.post('/drop-cell', (req, res) => {
       });
   } else if (receivedAgent == "generator-agent"){
       const newAgent = new GeneralAgent(receivedAgent, receivedCell);
+      agentList[newAgent.getUUID()] = newAgent;
       res.json({
           uuid: newAgent.getUUID(),
           type: receivedAgent,
