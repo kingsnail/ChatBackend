@@ -9,7 +9,7 @@ class Agent {
         this.subscribers = [];
         this.displayLocation = displayLocation;
         
-        console.log(`New agent ${this.name} UUID: €{this.uuid}`);
+        console.log("New agent " + this.name + " UUID: " + this.uuid);
     }
 
     getUUID() {
