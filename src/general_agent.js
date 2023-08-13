@@ -3,7 +3,7 @@ const Agent = require('./agent');
 class GeneralAgent extends Agent {
     constructor(name, displayLocation) {
         super(name, displayLocation);
-        this.agentType = "GeneralAgent";
+        this.agentType = "standard-agent";
         this.systemPrompt = "";
         this.userPrompt = "";
         this.outputPrompt = "";
