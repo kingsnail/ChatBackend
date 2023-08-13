@@ -54,7 +54,7 @@ class Agent {
             subscribers: this.subscribers,
             displayLocation: this.displayLocation
         }
-        console.log('Save');
+        console.log('agent save');
         return d;
     }
 }
