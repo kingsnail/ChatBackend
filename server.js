@@ -12,7 +12,7 @@ let agentList = {};
 
 function addAgent( a ) {
     agentList[ a.getUUID()] = a;
-    console.log("AgentList=" + agentList );
+    console.log("AgentList=" + agentList.toString() );
 }
 
 app.use(cors());
