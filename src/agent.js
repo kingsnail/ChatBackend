@@ -23,6 +23,10 @@ class Agent {
     getDisplayLocation(){
         return this.displayLocation;
     }
+
+    setName(n) {
+        this.name = n;
+    }
     
     setInput(i) { 
         console.log('Input is ${i}.');  
