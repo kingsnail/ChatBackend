@@ -44,7 +44,8 @@ app.post('/register', (req, res) => {
 });
 
 app.get('/agent-state', (req, res) => {
-    const agentID = req.body.agentID;
+    const agentID = req.query.agentID;
+    console.log("agentID from query = " + agentID);
     const agentState = agentList[agentID].save();
     res.json(agentState);
 });
