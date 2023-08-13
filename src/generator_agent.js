@@ -3,7 +3,10 @@ const Agent = require('./agent');
 class GeneratorAgent extends Agent {
     constructor(name, displayLocation) {
         super(name, displayLocation);
-        this.agentType = "GeneratorAgent";        
+        this.agentType = "GeneratorAgent";   
+        this.systemPrompt = "";
+        this.userPrompt = "";
+        this.outputPrompt = "";
         console.log("New generator agent " + this.name + " UUID: " + this.uuid);
     }
         
