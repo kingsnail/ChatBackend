@@ -30,6 +30,14 @@ class GeneralAgent extends Agent {
         this.outputPrompt = p;
     }
 
+    save(){
+        d = super();
+        d['systemPrompt'] = this.systemPrompt;
+        d['userPrompt'] = this.userPrompt;
+        d['outputPrompt'] = this.outputPrompt;
+        return d;
+    }
+
 }
 
 module.exports = GeneralAgent;
