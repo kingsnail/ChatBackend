@@ -83,6 +83,7 @@ app.post('/drop-cell', (req, res) => {
       res.json({
           uuid: newAgent.getUUID(),
           type: receivedAgent,
+          name: newAgent.getName(),
           description: 'This is a description based on received data.'
       });
   } else if (receivedAgent == "generator-agent"){
@@ -91,6 +92,7 @@ app.post('/drop-cell', (req, res) => {
       res.json({
           uuid: newAgent.getUUID(),
           type: receivedAgent,
+          name: newAgent.getName(),
           description: 'This is a description based on received data.'
       });
   } else {
