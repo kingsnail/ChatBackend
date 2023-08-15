@@ -24,6 +24,10 @@ class Agent {
         return this.displayLocation;
     }
 
+    getName(){
+        return this.name;
+    }
+    
     setName(n) {
         this.name = n;
     }
