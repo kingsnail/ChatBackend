@@ -23,12 +23,16 @@ class GeneralAgent extends Agent {
     
     setSystemPrompt(p) {
         this.systemPrompt = p;
+        this.version++;
+
     }
     setUserPrompt(p) {
         this.userPrompt = p;
+        this.version++;
     }
     setOutputPrompt(p) {
         this.outputPrompt = p;
+        this.version++;
     }
 
     save(){
