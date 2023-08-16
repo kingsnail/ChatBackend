@@ -18,7 +18,7 @@ class Agent {
         return this.uuid;
     }
 
-    getVersion{
+    getVersion(){
         return this.version;
     }
 
