@@ -53,7 +53,6 @@ app.post('/update-agent', (req, res) => {
     agentList[agentUUID].setOutputPrompt(req.body.outputPrompt);
     
     res.json({
-          ok: true;
           version: agentList[agentUUID].getVersion();
     });
 
