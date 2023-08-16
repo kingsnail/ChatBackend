@@ -1,8 +1,8 @@
 const Agent = require('./agent');
 
 class GeneratorAgent extends Agent {
-    constructor(name, displayLocation) {
-        super(name, displayLocation);
+    constructor(name, displayRow, displayCol) {
+        super(name, displayRow, displayCol);
         this.agentType = "generator-agent";   
         this.systemPrompt = `You are a helpful assistant. Please try and follow the next instructions to the best of your ability. When asked a question, answer the question to the best of your ability.`;
         this.userPrompt = "";
