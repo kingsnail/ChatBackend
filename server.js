@@ -51,6 +51,12 @@ app.post('/update-agent', (req, res) => {
     agentList[agentUUID].setSystemPrompt(req.body.systemPrompt);
     agentList[agentUUID].setUserPrompt(req.body.userPrompt);
     agentList[agentUUID].setOutputPrompt(req.body.outputPrompt);
+    
+    res.json({
+          ok: true;
+          version: agentList[agentUUID].getVersion();
+    });
+
 });
 
 app.get('/agent-state', (req, res) => {
