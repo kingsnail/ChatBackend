@@ -66,7 +66,8 @@ class Agent {
         this.name = d.name;
         this.uuid = d.uuid;
         this.subscribers = d.subscribers;
-        this.displayLocation = d.displayLocation;
+        this.displayRow = d.displayRow;
+        this.displayCol = d.displayCol;
         this.version = d.version;
     }
 
@@ -76,7 +77,8 @@ class Agent {
             name: this.name,
             uuid: this.uuid,
             subscribers: this.subscribers,
-            displayLocation: this.displayLocation,
+            displayRow: this.displayRow,
+            displayCol: this.displayCol,
             version: this.version,
             uuidv:  this.uuid + "|" + this.version.toString()
         }
