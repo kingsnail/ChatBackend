@@ -2,12 +2,14 @@ const { v4: uuidv4 } = require('uuid');
 
 // Parent class for generic agent type
 class Agent {
-    constructor(name, displayLocation) {
+    constructor(name, displayRow, displayCol) {
         this.agentType = "agent";
         this.name = name;
         this.uuid = uuidv4();
         this.subscribers = [];
-        this.displayLocation = displayLocation;
+        this.version = 0;
+        this.displayRow = displayRow;
+        this.displayCol = displayCol;
         
         console.log("New agent " + this.name + " UUID: " + this.uuid);
     }
@@ -16,12 +18,23 @@ class Agent {
         return this.uuid;
     }
 
+    getVersion{
+        return this.version;
+    }
+
+    getUUIDV() {
+        return this.uuid + "|" + this.version.toString();
+    }
+
     getType(){
         return this.agentType;
     }
 
-    getDisplayLocation(){
-        return this.displayLocation;
+    getDisplayRow(){
+        return this.displayRow;
+    }
+    getDisplayCol(){
+        return this.displayCol;
     }
 
     getName(){
@@ -30,10 +43,12 @@ class Agent {
     
     setName(n) {
         this.name = n;
+        this.version++;
     }
     
     setInput(i) { 
         console.log('Input is ${i}.');  
+        this.version++;
     }
   
     execute() {
@@ -52,6 +67,7 @@ class Agent {
         this.uuid = d.uuid;
         this.subscribers = d.subscribers;
         this.displayLocation = d.displayLocation;
+        this.version = d.version;
     }
 
     save(){
@@ -61,6 +77,7 @@ class Agent {
             uuid: this.uuid,
             subscribers: this.subscribers,
             displayLocation: this.displayLocation
+            version: this.version;
         }
         console.log('agent save');
         return d;
