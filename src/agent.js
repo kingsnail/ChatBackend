@@ -76,8 +76,9 @@ class Agent {
             name: this.name,
             uuid: this.uuid,
             subscribers: this.subscribers,
-            displayLocation: this.displayLocation
-            version: this.version;
+            displayLocation: this.displayLocation,
+            version: this.version,
+            uuidv:  this.uuid + "|" + this.version.toString()
         }
         console.log('agent save');
         return d;
