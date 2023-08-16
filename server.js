@@ -81,9 +81,10 @@ app.get('/standard-tools', (req, res) => {
 
 app.post('/drop-cell', (req, res) => {
   const receivedAgent = req.body.agent;
-  const receivedCell  = req.body.cell;
+  const receivedRow  = req.body.displayRow;
+  const receivedCol  = req.body.displayCol;
   if (receivedAgent == "standard-agent"){
-      const newAgent = new GeneralAgent(receivedAgent, receivedCell);
+      const newAgent = new GeneralAgent(receivedAgent, receivedRow, receivedCol);
       addAgent(newAgent);
       res.json({
           uuid: newAgent.getUUID(),
@@ -92,7 +93,7 @@ app.post('/drop-cell', (req, res) => {
           description: 'This is a description based on received data.'
       });
   } else if (receivedAgent == "generator-agent"){
-      const newAgent = new GeneratorAgent(receivedAgent, receivedCell);
+      const newAgent = new GeneratorAgent(receivedAgent, receivedRow, receivedCol);
       addAgent(newAgent);
       res.json({
           uuid: newAgent.getUUID(),
