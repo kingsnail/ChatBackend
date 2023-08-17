@@ -81,8 +81,9 @@ app.get('/standard-tools', (req, res) => {
 
 app.post('/drop-cell', (req, res) => {
   const receivedAgent = req.body.agent;
-  const receivedRow  = req.body.displayRow;
-  const receivedCol  = req.body.displayCol;
+  const receivedRow  = req.body.disprow;
+  const receivedCol  = req.body.dispcol;
+  console.log("/drop-cell: " + receivedRow + ", " + receivedCol);
   if (receivedAgent == "standard-agent"){
       const newAgent = new GeneralAgent(receivedAgent, receivedRow, receivedCol);
       addAgent(newAgent);
