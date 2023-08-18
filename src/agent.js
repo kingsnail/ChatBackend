@@ -26,6 +26,10 @@ class Agent {
         return this.uuid + "|" + this.version.toString();
     }
 
+    getSignature(){
+        return this.uuid + "|" + this.version.toString() + "|" this.agentType;
+    }
+    
     getType(){
         return this.agentType;
     }
