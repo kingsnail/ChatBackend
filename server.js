@@ -59,8 +59,8 @@ app.post('/update-agent', (req, res) => {
 
 });
 
-app.get('/agent-state', (req, res) => {
-    const agentID = req.query.agentID;
+app.post('/agent-state', (req, res) => {
+    const agentID = req.body.agentID;
     console.log("agentID from query = " + agentID);
     const agentState = agentList[agentID].save();
     const agentStateJSON = JSON.stringify(agentState);
