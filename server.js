@@ -88,25 +88,25 @@ app.post('/drop-cell', (req, res) => {
       const newAgent = new GeneralAgent(receivedAgent, receivedRow, receivedCol);
       addAgent(newAgent);
       res.json({
-          uuid: newAgent.getUUID(),
-          type: receivedAgent,
-          name: newAgent.getName(),
-          description: 'This is a description based on received data.'
+          uuid:      newAgent.getUUID(),
+          type:      newAgent.getType(),
+          name:      newAgent.getName(),
+          signature: newAgent.getSignature()
       });
   } else if (receivedAgent == "generator-agent"){
       const newAgent = new GeneratorAgent(receivedAgent, receivedRow, receivedCol);
       addAgent(newAgent);
       res.json({
-          uuid: newAgent.getUUID(),
-          type: receivedAgent,
-          name: newAgent.getName(),
-          description: 'This is a description based on received data.'
+          uuid:      newAgent.getUUID(),
+          type:      newAgent.getType(),
+          name:      newAgent.getName(),
+          signature: newAgent.getSignature()
       });
   } else {
       res.json({
-          uuid : 'xxxx',
+          uuid : 'unrecognizedagent',
           type : receivedAgent,
-          description: `Received: ${receivedAgent} in cell ${receivedCell}`,
+          signature: '0|0|' + receivedAgent
           });
   };
 });
