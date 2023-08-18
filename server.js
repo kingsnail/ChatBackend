@@ -54,7 +54,7 @@ app.post('/update-agent', (req, res) => {
     
     res.json({
           version:   agentList[agentUUID].getVersion(),
-          signature: agentList[agnetUUID].getSignature()
+          signature: agentList[agentUUID].getSignature()
     });
 
 });
