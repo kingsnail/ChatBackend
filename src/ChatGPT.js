@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 
 async function getChatGPTResponse(promptText) {
   const API_ENDPOINT = 'https://api.openai.com/v1/engines/davinci/completions'; // this endpoint might change depending on OpenAI's documentation
