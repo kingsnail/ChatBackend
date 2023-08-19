@@ -2,8 +2,8 @@ import axios from 'axios';
 
 async function getChatGPTResponse(promptText) {
   const API_ENDPOINT = 'https://api.openai.com/v1/chat/completions'; // this endpoint might change depending on OpenAI's documentation
-  const API_KEY = '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'; // replace with your OpenAI API key
-  const ORG_KEY = 'org-lNKLoHVe60pOjy4RBnctEeEx';
+  const API_KEY = ''; // replace with your OpenAI API key
+  const ORG_KEY = '';
   
   const headers = {
     'Content-Type': 'application/json',
