@@ -6,11 +6,15 @@ async function getChatGPTResponse(promptText) {
   const ORG_KEY = 'org-lNKLoHVe60pOjy4RBnctEeEx';
   
   const headers = {
+    'Content-Type': 'application/json',
     'Authorization': `Bearer ${API_KEY}`,
-    'OpenAI-Organization': `${ORG_KEY}`,
-    'Content-Type': 'application/json'
+    'OpenAI-Organization': `${ORG_KEY}`
   };
 
+  console.log("================================");
+  console.log("headers=" + headers);
+  console.log("================================");
+  
   const data = {
      "model": "gpt-3.5-turbo",
      "messages": [{"role": "user", "content": "Say this is a test!"}],
