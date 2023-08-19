@@ -1,4 +1,4 @@
-import { Configuration, OpenAIApi } from "openai";
+const openai = require('openai');
 
 const configuration = new Configuration({
     organization: "org-lNKLoHVe60pOjy4RBnctEeEx",
