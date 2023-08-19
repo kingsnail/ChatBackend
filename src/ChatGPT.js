@@ -12,7 +12,7 @@ async function getChatGPTResponse(promptText) {
   };
 
   console.log("================================");
-  console.log("headers=" + headers);
+  console.log("headers=" + JSON.stringify(headers));
   console.log("================================");
   
   const data = {
