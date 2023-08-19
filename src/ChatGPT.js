@@ -1,4 +1,4 @@
-const openai = require('openai');
+const openAI = require('openai');
 
 const configuration = new Configuration({
     organization: "org-lNKLoHVe60pOjy4RBnctEeEx",
