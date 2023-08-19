@@ -6,10 +6,9 @@ async function getChatGPTResponse(promptText) {
   const ORG_KEY = 'org-lNKLoHVe60pOjy4RBnctEeEx';
   
   const headers = {
+    'Content-Type': 'application/json'
     'Authorization': `Bearer ${API_KEY}`,
     'OpenAI-Organization': `${ORG_KEY}`,
-    'Content-Type': 'application/json',
-    'Accept': 'application/json'
   };
 
   const data = {
