@@ -113,6 +113,15 @@ app.post('/drop-cell', (req, res) => {
           name:      newAgent.getName(),
           signature: newAgent.getSignature()
       });
+  } else if (receivedAgent == "output-agent"){
+      const newAgent = new OutputAgent(receivedAgent, receivedRow, receivedCol);
+      addAgent(newAgent);
+      res.json({
+          uuid:      newAgent.getUUID(),
+          type:      newAgent.getType(),
+          name:      newAgent.getName(),
+          signature: newAgent.getSignature()
+      });
   } else {
       res.json({
           uuid : 'unrecognizedagent',
