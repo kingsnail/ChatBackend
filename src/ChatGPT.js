@@ -1,42 +1,35 @@
-import { Configuration, OpenAIApi } from "openai";
-//const { Configuration, OpenAIApi } = require("openai");
-const readlineSync = require("readline-sync");
-require("dotenv").config();
+const axios = require('axios');
 
-let APIcall = async () => {
-const newConfig = new Configuration({
-	apiKey: process.env.OPENAI_SECRET_KEY
-});
-const openai = new OpenAIApi(newConfig);
-	
-const chatHistory = [];
+async function getChatGPTResponse(promptText) {
+  const API_ENDPOINT = 'https://api.openai.com/v1/engines/davinci/completions'; // this endpoint might change depending on OpenAI's documentation
+  const API_KEY = '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'; // replace with your OpenAI API key
 
-do {
-	const user_input = readlineSync.question("Enter your input: ");
-	const messageList = chatHistory.map(([input_text, completion_text]) => ({
-	role: "user" === input_text ? "ChatGPT" : "user",
-	content: input_text
-	}));
-	messageList.push({ role: "user", content: user_input });
+  const headers = {
+    'Authorization': `Bearer ${API_KEY}`,
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  };
 
-	try {
-	const GPTOutput = await openai.createChatCompletion({
-		model: "gpt-3.5-turbo",
-		messages: messageList,
-	});
+  const data = {
+    prompt: promptText,
+    max_tokens: 150 // you can adjust this and other parameters as per your requirements
+  };
 
-	const output_text = GPTOutput.data.choices[0].message.content;
-	console.log(output_text);
+  try {
+    const response = await axios.post(API_ENDPOINT, data, { headers: headers });
+    return response.data.choices[0].text.trim();
+  } catch (error) {
+    console.error('Error calling the ChatGPT API:', error);
+    throw error;
+  }
+}
 
-	chatHistory.push([user_input, output_text]);
-	} catch (err) {
-	if (err.response) {
-		console.log(err.response.status);
-		console.log(err.response.data);
-	} else {
-		console.log(err.message);
-	}
-	}
-} while (readlineSync.question("\nYou Want more Results? (Y/N)").toUpperCase() === "Y");
-};
-APIcall();
+// Example usage:
+(async () => {
+  try {
+    const responseText = await getChatGPTResponse('What is the capital of France?');
+    console.log(responseText);
+  } catch (error) {
+    console.error('Failed to get a response:', error);
+  }
+})();
