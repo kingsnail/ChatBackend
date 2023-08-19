@@ -1,5 +1,5 @@
 import { Configuration, OpenAIApi } from "openai";
-const { Configuration, OpenAIApi } = require("openai");
+//const { Configuration, OpenAIApi } = require("openai");
 const readlineSync = require("readline-sync");
 require("dotenv").config();
 
