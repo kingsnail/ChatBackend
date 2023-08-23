@@ -24,3 +24,5 @@ class OpenAIAgent{
 
     }
 }
+
+module.exports.OpenAIAgent;
