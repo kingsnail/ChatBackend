@@ -1,5 +1,5 @@
 const Agent = require('./agent');
-const OpenAIAgent = require('./src/ChatGPT');
+const OpenAIAgent = require('./ChatGPT');
 
 class GeneralAgent extends Agent {
     constructor(name, displayRow, displayCol, apiKey) {
