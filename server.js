@@ -94,7 +94,7 @@ app.post('/drop-cell', (req, res) => {
   const receivedCol  = req.body.dispcol;
   console.log("/drop-cell: " + receivedRow + ", " + receivedCol);
   if (receivedAgent == "standard-agent"){
-      const newAgent = new GeneralAgent(receivedAgent, receivedRow, receivedCol);
+      const newAgent = new GeneralAgent(receivedAgent, receivedRow, receivedCol, apiKey);
       addAgent(newAgent);
       res.json({
           uuid:      newAgent.getUUID(),
