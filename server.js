@@ -1,3 +1,9 @@
+require('dotenv').config();
+
+const apiKey = process.env.OPENAI_SECRET_KEY;
+
+console.log("API Key:", apiKey);
+
 const GeneralAgent = require('./src/general_agent');
 const GeneratorAgent = require('./src/generator_agent');
 const InitiatorAgent = require('./src/initiator_agent');
