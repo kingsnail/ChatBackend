@@ -33,7 +33,17 @@ class GeneratorAgent extends Agent {
         this.outputPrompt = p;
     }
 
+    execute(){
 
+        (async () => {
+        
+            try {
+                const choices = await this.myAgent.execute();
+                console.log(choices);
+            } catch (error) {
+                console.error("Failed to fetch data:", error);
+            }
+         })();
+    }
 }
-
 module.exports = GeneratorAgent;
