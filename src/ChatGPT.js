@@ -6,17 +6,21 @@ class OpenAIAgent{
         this.openai = new OpenAI({apiKey: this.apiKey});
     }
 
-    async function execute(){
-        const completion = await openai.chat.completions.create({
-            messages: [{ role: 'user', content: 'Say this is a test' }],
-            model: 'gpt-3.5-turbo',
-        });
+    async execute(){
+        try {
+            const completion = await openai.chat.completions.create({
+                messages: [{ role: 'user', content: 'Say this is a test' }],
+                model: 'gpt-3.5-turbo',
+            });
+    
+            console.log(completion.choices);
 
-        console.log(completion.choices);
+            return( completion.choices );
+        
+        } catch (error) {
+            console.error("Error fetching data:", error);
+            throw error;
+        }
+
     }
 }
-  
-async function main() {
-}
-
-main();
