@@ -1,8 +1,10 @@
 const { v4: uuidv4 } = require('uuid');
 
+const OpenAIAgent = require('./src/ChatGPT');
+
 // Parent class for generic agent type
 class Agent {
-    constructor(name, displayRow, displayCol) {
+    constructor(name, displayRow, displayCol, apiKey) {
         this.agentType = "agent";
         this.name = name;
         this.uuid = uuidv4();
@@ -10,6 +12,7 @@ class Agent {
         this.version = 0;
         this.displayRow = displayRow;
         this.displayCol = displayCol;
+        this.myOpenAIAgent = new OpenAIAgent(apiKey);
         
         console.log("New agent " + this.name + " UUID: " + this.uuid);
     }
