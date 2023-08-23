@@ -1,5 +1,7 @@
 const OpenAI = require('openai');
 
+class OpenAIAgent:
+  
 const openai = new OpenAI({
   apiKey: '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', // defaults to process.env["OPENAI_API_KEY"]
 });
