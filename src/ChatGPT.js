@@ -1,18 +1,22 @@
 const OpenAI = require('openai');
 
-class OpenAIAgent:
+class OpenAIAgent{
+    constructor(apiKey){
+        this.apiKey = apiKey;
+        this.openai = new OpenAI({apiKey: this.apiKey});
+    }
+
+    execute(){
+        const completion = await openai.chat.completions.create({
+            messages: [{ role: 'user', content: 'Say this is a test' }],
+            model: 'gpt-3.5-turbo',
+        });
+
+        console.log(completion.choices);
+    }
+}
   
-const openai = new OpenAI({
-  apiKey: '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', // defaults to process.env["OPENAI_API_KEY"]
-});
-
 async function main() {
-  const completion = await openai.chat.completions.create({
-    messages: [{ role: 'user', content: 'Say this is a test' }],
-    model: 'gpt-3.5-turbo',
-  });
-
-  console.log(completion.choices);
 }
 
 main();
