@@ -25,4 +25,4 @@ class OpenAIAgent{
     }
 }
 
-module.exports.OpenAIAgent;
+module.exports = OpenAIAgent;
