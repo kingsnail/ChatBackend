@@ -103,7 +103,7 @@ app.post('/drop-cell', (req, res) => {
           signature: newAgent.getSignature()
       });
   } else if (receivedAgent == "generator-agent"){
-      const newAgent = new GeneratorAgent(receivedAgent, receivedRow, receivedCol);
+      const newAgent = new GeneratorAgent(receivedAgent, receivedRow, receivedCol, apiKey);
       addAgent(newAgent);
       res.json({
           uuid:      newAgent.getUUID(),
