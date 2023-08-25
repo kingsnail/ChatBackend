@@ -75,7 +75,7 @@ app.post('/run-agent', (req, res) => {
     const agentOPJSON = JSON.stringify(agentOP);
     console.log("Output= " + agentOPJSON);
     res.json(agentOPJSON);
-};
+});
 
 app.post('/agent-state', (req, res) => {
     const agentID = req.body.agentID;
