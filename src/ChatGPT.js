@@ -6,10 +6,11 @@ class OpenAIAgent{
         this.openai = new OpenAI({apiKey: this.apiKey});
     }
 
-    async execute(){
+    async execute(msg){
         try {
+            // msg = [{ role: 'user', content: 'Say this is a test' }]
             const completion = await this.openai.chat.completions.create({
-                messages: [{ role: 'user', content: 'Say this is a test' }],
+                messages: msg,
                 model: 'gpt-3.5-turbo',
             });
     
