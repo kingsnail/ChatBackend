@@ -52,5 +52,16 @@ class GeneratorAgent extends Agent {
             }
          })();
     }
+
+    save(){
+        let d = super.save();
+        d['systemPrompt'] = this.systemPrompt;
+        d['userPrompt'] = this.userPrompt;
+        d['outputPrompt'] = this.outputPrompt;
+        d['output'] = this.output;
+        console.log('Generator Agent Save');
+        return d;
+    }
+
 }
 module.exports = GeneratorAgent;
