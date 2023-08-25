@@ -45,7 +45,7 @@ class GeneratorAgent extends Agent {
             try {
                 const choices = await this.myAgent.execute();
                 console.log(choices);
-                this.output.append(choices);
+                this.output.push(choices);
                 
             } catch (error) {
                 console.error("Failed to fetch data:", error);
