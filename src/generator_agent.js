@@ -42,7 +42,7 @@ class GeneratorAgent extends Agent {
 
         (async () => {
         
-            try {msg = [{ role: 'user', content: 'Say this is a test' }]
+            try 
                 const msg = [{role: 'system', content: this.systemPrompt},
                              {role: 'system', content: this.outputPrompt},
                              {role: 'user',   content: this.userPrompt}
