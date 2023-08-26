@@ -1,12 +1,11 @@
-const Agent = require('./agent');
 
 class AgentStore {
     constructor() {
-        this.agentList = [];
+        this.agentList = {};
     }
 
     checkAgentExists( agentUUID ){
-    
+        return (agentUUID in this.agentList); 
     }
 
     getAgent( agentUUID ){
@@ -16,5 +15,15 @@ class AgentStore {
            return null;
          }
     }
+
+    add( agent ){
+        try{
+            this.agentList[ agent.getUUID()] = agent;
+        }
+        catch {
+            console.log("ERROR: AgentStore.add() failed.");
+        }
+    }
+}
 
 module.exports = AgentStore;
