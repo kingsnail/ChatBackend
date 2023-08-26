@@ -11,7 +11,6 @@ class Agent {
         this.displayRow = displayRow;
         this.displayCol = displayCol;
         
-        console.log("New agent " + this.name + " UUID: " + this.uuid);
     }
 
     getUUID() {
@@ -86,7 +85,6 @@ class Agent {
             version: this.version,
             uuidv:  this.uuid + "|" + this.version.toString()
         }
-        console.log('agent save');
         return d;
     }
 }
