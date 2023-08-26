@@ -12,8 +12,6 @@ class GeneralAgent extends Agent {
         this.output = [];
         this.myAgent = new OpenAIAgent(apiKey);
         
-        console.log("New general agent " + this.name + " UUID: " + this.uuid);
-      
     }
 
     getSystemPrompt() {
@@ -50,7 +48,6 @@ class GeneralAgent extends Agent {
         d['userPrompt'] = this.userPrompt;
         d['outputPrompt'] = this.outputPrompt;
         d['output'] = this.output;
-        console.log('General Agent Save');
         return d;
     }
 
