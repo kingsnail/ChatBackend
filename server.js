@@ -30,7 +30,8 @@ mongoose.connect('mongodb://localhost:27017/userDB', { useNewUrlParser: true, us
 
 const userSchema = new mongoose.Schema({
   username: String,
-  password: String
+  password: String, 
+  openAIKey: String
 });
 
 const User = mongoose.model('User', userSchema);
@@ -59,7 +60,7 @@ app.post('/update-agent', (req, res) => {
         myAgentStore.getAgent(agentUUID).setSystemPrompt(req.body.systemPrompt);
         myAgentStore.getAgent(agentUUID).setUserPrompt(req.body.userPrompt);
         myAgentStore.getAgent(agentUUID).setOutputPrompt(req.body.outputPrompt);
-    } else if (agentType =="output-agent") {
+    } else if (agentType == "output-agent" || agentType == "merge-agent" ) {
         myAgentStore.getAgent(agentUUID).setName(req.body.name); 
     }
     res.json({
