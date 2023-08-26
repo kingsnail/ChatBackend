@@ -28,4 +28,4 @@ class MergeAgent extends Agent {
 
 }
 
-module.exports = GeneralAgent;
+module.exports = MergeAgent;
