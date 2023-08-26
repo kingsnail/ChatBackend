@@ -108,7 +108,7 @@ app.post('/drop-cell', (req, res) => {
   console.log("/drop-cell: " + receivedRow + ", " + receivedCol);
   if (receivedAgent == "standard-agent"){
       const newAgent = new GeneralAgent(receivedAgent, receivedRow, receivedCol, apiKey);
-      addAgent(newAgent);
+      myAgentStore.add(newAgent);
       res.json({
           uuid:      newAgent.getUUID(),
           type:      newAgent.getType(),
@@ -117,7 +117,7 @@ app.post('/drop-cell', (req, res) => {
       });
   } else if (receivedAgent == "generator-agent"){
       const newAgent = new GeneratorAgent(receivedAgent, receivedRow, receivedCol, apiKey);
-      addAgent(newAgent);
+      myAgentStore.add(newAgent);
       res.json({
           uuid:      newAgent.getUUID(),
           type:      newAgent.getType(),
@@ -126,7 +126,7 @@ app.post('/drop-cell', (req, res) => {
       });
   } else if (receivedAgent == "initiator-agent"){
       const newAgent = new InitiatorAgent(receivedAgent, receivedRow, receivedCol);
-      addAgent(newAgent);
+      myAgentStore.add(newAgent);
       res.json({
           uuid:      newAgent.getUUID(),
           type:      newAgent.getType(),
@@ -135,7 +135,7 @@ app.post('/drop-cell', (req, res) => {
       });
   } else if (receivedAgent == "output-agent"){
       const newAgent = new OutputAgent(receivedAgent, receivedRow, receivedCol);
-      addAgent(newAgent);
+      myAgentStore.add(newAgent);
       res.json({
           uuid:      newAgent.getUUID(),
           type:      newAgent.getType(),
