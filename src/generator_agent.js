@@ -11,7 +11,6 @@ class GeneratorAgent extends Agent {
         this.myAgent = new OpenAIAgent(apiKey);
         this.output = [];
         
-        console.log("New generator agent " + this.name + " UUID: " + this.uuid);
     }
         
     getSystemPrompt() {
@@ -63,7 +62,6 @@ class GeneratorAgent extends Agent {
         d['userPrompt'] = this.userPrompt;
         d['outputPrompt'] = this.outputPrompt;
         d['output'] = this.output;
-        console.log('Generator Agent Save');
         return d;
     }
 
