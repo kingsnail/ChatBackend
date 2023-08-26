@@ -1,4 +1,5 @@
 require('dotenv').config();
+const AgentStore = require('./src/agentstore');
 
 const apiKey = process.env.OPENAI_SECRET_KEY;
 
@@ -16,13 +17,10 @@ const cors = require('cors');
 
 const app = express();
 
-let agentList = {};
-
-function addAgent( a ) {
-    agentList[ a.getUUID()] = a;
-    console.log("agentList:");
-    //console.log(JSON.stringify(agentList));
-}
+//
+// Create the new agent store to hold all agent details.
+//
+myAgentStore = new AgentStore();
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -55,18 +53,18 @@ app.post('/register', (req, res) => {
 app.post('/update-agent', (req, res) => {
     const agentUUID = req.body.uuid;
     console.log("/update-agent called with data " + JSON.stringify(req.body));
-    const agentType = agentList[agentUUID].getType();
+    const agentType = myAgentStore.getAgent(agentUUID).getType();
     if (agentType == "standard-agent" || agentType == "generator-agent"){
-        agentList[agentUUID].setName(req.body.name);
-        agentList[agentUUID].setSystemPrompt(req.body.systemPrompt);
-        agentList[agentUUID].setUserPrompt(req.body.userPrompt);
-        agentList[agentUUID].setOutputPrompt(req.body.outputPrompt);
+        myAgentStore.getAgent(agentUUID).setName(req.body.name);
+        myAgentStore.getAgent(agentUUID).setSystemPrompt(req.body.systemPrompt);
+        myAgentStore.getAgent(agentUUID).setUserPrompt(req.body.userPrompt);
+        myAgentStore.getAgent(agentUUID).setOutputPrompt(req.body.outputPrompt);
     } else if (agentType =="output-agent") {
-        agentList[agentUUID].setName(req.body.name); 
+        myAgentStore.getAgent(agentUUID).setName(req.body.name); 
     }
     res.json({
-          version:   agentList[agentUUID].getVersion(),
-          signature: agentList[agentUUID].getSignature()
+          version:   myAgentStore.getAgent(agentUUID).getVersion(),
+          signature: myAgentStore.getAgent(agentUUID).getSignature()
     });
 
 });
@@ -74,8 +72,8 @@ app.post('/update-agent', (req, res) => {
 app.post('/run-agent', (req, res) => {
     const agentID = req.body.agentID;
     console.log("agentID from query = " + agentID);
-    agentList[agentID].execute();
-    const agentOP = agentList[agentID].getOutput();
+    myAgentStore.getAgent(agentID).execute();
+    const agentOP = myAgentStore.getAgent(agentID).getOutput();
     const agentOPJSON = JSON.stringify(agentOP);
     console.log("Output= " + agentOPJSON);
     res.json(agentOPJSON);
@@ -84,7 +82,7 @@ app.post('/run-agent', (req, res) => {
 app.post('/agent-state', (req, res) => {
     const agentID = req.body.agentID;
     console.log("agentID from query = " + agentID);
-    const agentState = agentList[agentID].save();
+    const agentState = myAgentStore.getAgent(agentID).save();
     const agentStateJSON = JSON.stringify(agentState);
     console.log("agentState=" + agentStateJSON);
     res.json(agentStateJSON);
