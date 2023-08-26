@@ -107,7 +107,7 @@ app.post('/drop-cell', (req, res) => {
   const receivedCol  = req.body.dispcol;
   console.log("/drop-cell: " + receivedRow + ", " + receivedCol);
   if (receivedAgent == "standard-agent"){
-      const newAgent = new GeneralAgent(receivedAgent, receivedRow, receivedCol, apiKey);
+      const newAgent = new GeneralAgent(myAgentStore, receivedAgent, receivedRow, receivedCol, apiKey);
       myAgentStore.add(newAgent);
       res.json({
           uuid:      newAgent.getUUID(),
@@ -116,7 +116,7 @@ app.post('/drop-cell', (req, res) => {
           signature: newAgent.getSignature()
       });
   } else if (receivedAgent == "generator-agent"){
-      const newAgent = new GeneratorAgent(receivedAgent, receivedRow, receivedCol, apiKey);
+      const newAgent = new GeneratorAgent(myAgentStore, receivedAgent, receivedRow, receivedCol, apiKey);
       myAgentStore.add(newAgent);
       res.json({
           uuid:      newAgent.getUUID(),
@@ -125,7 +125,7 @@ app.post('/drop-cell', (req, res) => {
           signature: newAgent.getSignature()
       });
   } else if (receivedAgent == "initiator-agent"){
-      const newAgent = new InitiatorAgent(receivedAgent, receivedRow, receivedCol);
+      const newAgent = new InitiatorAgent(myAgentStore, receivedAgent, receivedRow, receivedCol);
       myAgentStore.add(newAgent);
       res.json({
           uuid:      newAgent.getUUID(),
@@ -134,7 +134,7 @@ app.post('/drop-cell', (req, res) => {
           signature: newAgent.getSignature()
       });
   } else if (receivedAgent == "output-agent"){
-      const newAgent = new OutputAgent(receivedAgent, receivedRow, receivedCol);
+      const newAgent = new OutputAgent(myAgentStore, receivedAgent, receivedRow, receivedCol);
       myAgentStore.add(newAgent);
       res.json({
           uuid:      newAgent.getUUID(),
@@ -143,7 +143,7 @@ app.post('/drop-cell', (req, res) => {
           signature: newAgent.getSignature()
       });
   } else if (receivedAgent == "merge-agent"){
-      const newAgent = new MergeAgent(receivedAgent, receivedRow, receivedCol);
+      const newAgent = new MergeAgent(myAgentStore, receivedAgent, receivedRow, receivedCol);
       myAgentStore.add(newAgent);
       res.json({
           uuid:      newAgent.getUUID(),
