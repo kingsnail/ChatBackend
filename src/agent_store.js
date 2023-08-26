@@ -9,7 +9,7 @@ class AgentStore {
     }
 
     getAgent( agentUUID ){
-         if (checkAgentExists( agentUUID )){
+         if (this.checkAgentExists( agentUUID )){
            return this.agentList[agentUUID];
          } else {
            return null;
