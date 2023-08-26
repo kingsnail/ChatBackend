@@ -2,7 +2,7 @@ const { v4: uuidv4 } = require('uuid');
 
 // Parent class for generic agent type
 class Agent {
-    constructor(name, displayRow, displayCol) {
+    constructor(agentStore, name, displayRow, displayCol) {
         this.agentType = "agent";
         this.name = name;
         this.uuid = uuidv4();
