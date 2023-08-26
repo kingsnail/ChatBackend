@@ -71,6 +71,16 @@ app.post('/update-agent', (req, res) => {
 
 });
 
+app.post('/drop-on-output', (req, res) => {
+    try{
+        const toAgent = req.body.toAgent;
+        const fromAgent = req.body.fromAgent;
+        console.log("/drop-on-output " + toAgent + ", " + fromAgent);
+    }
+    catch (error){
+    }
+});
+
 app.post('/run-agent', (req, res) => {
     try{
         const agentID = req.body.agentID;
