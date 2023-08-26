@@ -1,4 +1,5 @@
 require('dotenv').config();
+const AgentStore = require('./src/agentstore');
 
 const apiKey = process.env.OPENAI_SECRET_KEY;
 
@@ -16,13 +17,10 @@ const cors = require('cors');
 
 const app = express();
 
-let agentList = {};
-
-function addAgent( a ) {
-    agentList[ a.getUUID()] = a;
-    console.log("agentList:");
-    //console.log(JSON.stringify(agentList));
-}
+//
+// Create the new agent store to hold all agent details.
+//
+myAgentStore = new AgentStore();
 
 app.use(cors());
 app.use(bodyParser.json());
