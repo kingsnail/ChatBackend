@@ -74,7 +74,7 @@ app.post('/update-agent', (req, res) => {
 app.post('/run-agent', (req, res) => {
     try{
         const agentID = req.body.agentID;
-        if (myAgentStore.checkAgentExists(agentID){
+        if (myAgentStore.checkAgentExists(agentID)){
             myAgentStore.getAgent(agentID).execute();
             const agentOP = myAgentStore.getAgent(agentID).getOutput();
             const agentOPJSON = JSON.stringify(agentOP);
