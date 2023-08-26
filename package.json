@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
   "name": "backend",
-=======
-   "name": "backend",
->>>>>>> b15d53c (All commit)
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
