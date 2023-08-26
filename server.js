@@ -1,5 +1,5 @@
 require('dotenv').config();
-const AgentStore = require('./src/agentstore');
+const AgentStore = require('./src/agent_store');
 
 const apiKey = process.env.OPENAI_SECRET_KEY;
 
