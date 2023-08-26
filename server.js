@@ -96,7 +96,6 @@ app.post('/agent-state', (req, res) => {
         if(myAgentStore.checkAgentExists(agentID)){
             const agentState = myAgentStore.getAgent(agentID).save();
             const agentStateJSON = JSON.stringify(agentState);
-            console.log("agentState=" + agentStateJSON);
             res.json(agentStateJSON);
         } else {
           res.status(400).send('Agent Entity <' + agentID + '> does not exist.');
@@ -125,7 +124,6 @@ app.post('/drop-cell', (req, res) => {
   const receivedAgent = req.body.agent;
   const receivedRow  = req.body.disprow;
   const receivedCol  = req.body.dispcol;
-  console.log("/drop-cell: " + receivedRow + ", " + receivedCol);
   if (receivedAgent == "standard-agent"){
       const newAgent = new GeneralAgent(myAgentStore, receivedAgent, receivedRow, receivedCol, apiKey);
       myAgentStore.add(newAgent);
