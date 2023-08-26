@@ -15,7 +15,7 @@ class AgentStore {
            return null;
          }
     }
-
+    
     add( agent ){
         try{
             this.agentList[ agent.getUUID()] = agent;
