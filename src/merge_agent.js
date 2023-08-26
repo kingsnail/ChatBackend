@@ -7,8 +7,6 @@ class MergeAgent extends Agent {
         this.output = [];
         this.sourcesList = []
         
-        console.log("New Merge agent " + this.name + " UUID: " + this.uuid);
-      
     }
 
     getOutput(){
@@ -22,7 +20,7 @@ class MergeAgent extends Agent {
     save(){
         let d = super.save();
         d['output'] = this.output;
-        console.log('General Agent Save');
+        d['sourcesList'] = this.sourcesList;
         return d;
     }
 
