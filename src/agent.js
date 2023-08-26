@@ -50,8 +50,8 @@ class Agent {
         this.version++;
     }
     
-    setInput(i) { 
-        console.log('Input is ${i}.');  
+    setInput(i, fromAgent) { 
+        console.log("Input is" + i + " from agent " + fromAgent);  
         this.version++;
     }
   
