@@ -72,22 +72,40 @@ app.post('/update-agent', (req, res) => {
 });
 
 app.post('/run-agent', (req, res) => {
-    const agentID = req.body.agentID;
-    console.log("agentID from query = " + agentID);
-    myAgentStore.getAgent(agentID).execute();
-    const agentOP = myAgentStore.getAgent(agentID).getOutput();
-    const agentOPJSON = JSON.stringify(agentOP);
-    console.log("Output= " + agentOPJSON);
-    res.json(agentOPJSON);
+    try{
+        const agentID = req.body.agentID;
+        if (myAgentStore.checkAgentExists(agentID){
+            myAgentStore.getAgent(agentID).execute();
+            const agentOP = myAgentStore.getAgent(agentID).getOutput();
+            const agentOPJSON = JSON.stringify(agentOP);
+            console.log("Output= " + agentOPJSON);
+            res.json(agentOPJSON);
+        } else {
+          res.status(400).send('Agent Entity <' + agentID + '> does not exist.');
+        }
+    } 
+    catch (error){
+        console.log("Error: " + error);
+        res.status(500).send('Internal Error in /run-agent');
+    }
 });
 
 app.post('/agent-state', (req, res) => {
-    const agentID = req.body.agentID;
-    console.log("agentID from query = " + agentID);
-    const agentState = myAgentStore.getAgent(agentID).save();
-    const agentStateJSON = JSON.stringify(agentState);
-    console.log("agentState=" + agentStateJSON);
-    res.json(agentStateJSON);
+    try{
+        const agentID = req.body.agentID;
+        if(myAgentStore.checkAgentExists(agentID)){
+            const agentState = myAgentStore.getAgent(agentID).save();
+            const agentStateJSON = JSON.stringify(agentState);
+            console.log("agentState=" + agentStateJSON);
+            res.json(agentStateJSON);
+        } else {
+          res.status(400).send('Agent Entity <' + agentID + '> does not exist.');
+        }
+    }
+    catch (error){
+        console.log("Error: " + error);
+        res.status(500).send('Internal Error in /agent-state');
+    }
 });
 
 const standardTools = [
