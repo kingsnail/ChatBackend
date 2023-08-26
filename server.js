@@ -95,7 +95,8 @@ const standardTools = [
   { id: 'ST2', name: 'Input Agent',     type: 'input-agent',     color: 'red' },
   { id: 'ST3', name: 'Standard Agent',  type: 'standard-agent',  color: 'blue' },
   { id: 'ST4', name: 'Generator Agent', type: 'generator-agent', color: 'blue' },
-  { id: 'ST5', name: 'Output Agent',    type: 'output-agent',    color: 'yellow' }
+  { id: 'ST5', name: 'Output Agent',    type: 'output-agent',    color: 'orange' },
+  { id: 'ST6', name: 'Merge Agent',     type: 'merge-agent',     color: 'magenta'}
 ];
 
 app.get('/standard-tools', (req, res) => {
