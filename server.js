@@ -37,6 +37,13 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
+app.post('/login', (req, res) => {
+   const username = req.body.username;
+   const password = req.body.password;
+   const tokenstr = {token: "12345"};
+   res.json=JSON.stringify(tokenstr);
+});
+
 app.post('/register', (req, res) => {
   const newUser = new User({
     username: req.body.username,
