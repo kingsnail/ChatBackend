@@ -52,7 +52,7 @@ async function createHash( p ){
 }
 
 async function createUser( u, e, p, k, t){
-    console.log("p=" + p);
+    console.log("p=" + JSON.stringify(p));
     const nU = new User({ username: u, email: e, password: p, useownkey: k, tokensused: t });
     await nU.save();
 }
