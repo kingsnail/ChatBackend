@@ -52,10 +52,12 @@ async function createHash( p ){
 }
 
 async function createUser( u, e, p, k, t){
+    console.log("p=" + p);
     const nU = new User({ username: u, email: e, password: p, useownkey: k, tokensused: t });
     await nU.save();
 }
 
+console.log("Creating Users...");
 createUser("markp", "markpearce47@gmail.com", createHash("4543mark"), false, 0 );
 createUser("lewis", "lewisbrereton@outlook.com", createHash("tfx2309"), false, 0 );
 
