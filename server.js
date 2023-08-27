@@ -44,7 +44,7 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-async function valudateUser( username, password ){
+async function validateUser( username, password ){
     try{
         const user = await User.findOne({ username });
         const pcheck = await bcrypt.compare(password, user.password);
