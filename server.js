@@ -44,6 +44,16 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
+async function findUser( username ){
+    try{
+        const user = await User.findOne({ username });
+        return user;
+    }
+    catch (error){
+        console.log("Error in findUser.");
+    }
+}
+
 // Create new users
 async function createHash( p ){
     console.log("createHash(" + p + ")");
@@ -78,7 +88,7 @@ app.post('/login', (req, res) => {
    const username = req.body.username;
    const password = req.body.password;
    console.log("/login " + username + ", " + password );
-   const user = await User.findOne({ username });
+   user = findUser(username);
    if (user && await bcrypt.compare(password, user.password)) {
       const tokenstr = {token: "12345"}; 
       res.json(tokenstr);
