@@ -1,5 +1,6 @@
 require('dotenv').config();
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const AgentStore = require('./src/agent_store');
 
@@ -91,11 +92,40 @@ app.post('/login', (req, res) => {
    const password = req.body.password;
    console.log("/login " + username + ", " + password );
    if (validateUser(username, password)) {
-      const tokenstr = {token: "12345"}; 
-      res.json(tokenstr);
+      const token = jwt.sign(username, process.env.JWT_SECRET, { expiresIn: '1h' });
+      res.json(token);
 } else {
      res.status(401).send('User does not exist or incorrect password.');}    
 });
+
+/**********************
+ * VERIFY LOGIN TOKEN *
+ **********************/
+function verifyToken(req, res, next) {
+    const bearerHeader = req.headers['authorization'];
+
+    if (typeof bearerHeader !== 'undefined') {
+        const bearer = bearerHeader.split(' ');
+        const bearerToken = bearer[1];
+        req.token = bearerToken;
+
+        jwt.verify(req.token, process.env.JWT_SECRET, (err, authData) => {
+            if (err) {
+                res.sendStatus(403); // Forbidden
+            } else {
+                req.user = authData;
+                next();
+            }
+        });
+    } else {
+        res.sendStatus(401); // Unauthorized
+    }
+}
+
+app.get('/protected', verifyToken, (req, res) => {
+    res.json({ message: 'This is a protected route', user: req.user });
+});
+
 
 app.post('/register', (req, res) => {
   const newUser = new User({
@@ -186,7 +216,7 @@ const standardTools = [
   { id: 'ST6', name: 'Merge Agent',     type: 'merge-agent',     color: 'magenta'}
 ];
 
-app.get('/standard-tools', (req, res) => {
+app.get('/standard-tools', verifyToken, (req, res) => {
    res.json(standardTools);
 });
 
