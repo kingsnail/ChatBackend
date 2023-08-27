@@ -42,7 +42,7 @@ app.post('/login', (req, res) => {
    const password = req.body.password;
    const tokenstr = {token: "12345"};
    console.log("/login " + username + ", " + password );
-   res.json=JSON.stringify(tokenstr);
+   res.json(tokenstr);
 });
 
 app.post('/register', (req, res) => {
