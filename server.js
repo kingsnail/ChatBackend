@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 async function getUser( username ){
-    const user = await User.findone({username});
+    const user = await User.findOne({username});
     return user;
 }
 
