@@ -77,9 +77,13 @@ createUser("lewis", "lewisbrereton@outlook.com", "tfx2309", false, 0 );
 app.post('/login', (req, res) => {
    const username = req.body.username;
    const password = req.body.password;
-   const tokenstr = {token: "12345"};
    console.log("/login " + username + ", " + password );
-   res.json(tokenstr);
+   const user = await User.findOne({ username });
+   if (user && await bcrypt.compare(password, user.password)) {
+      const tokenstr = {token: "12345"}; 
+      res.json(tokenstr);
+} else {
+     res.status(401).send('User does not exist or incorrect password.');}    
 });
 
 app.post('/register', (req, res) => {
