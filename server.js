@@ -35,19 +35,22 @@ app.use(bodyParser.json());
 mongoose.connect('mongodb://localhost:27017/userDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const userSchema = new mongoose.Schema({
-    username: { type: String, required: true, unique: true },
-    email:    { type: String, required: true, unique: true },
-    password: { type: String, required: true }
+    username:   { type: String, required: true, unique: true },
+    email:      { type: String, required: true, unique: true },
+    password:   { type: String, required: true },
+    useownkey:  { type: Boolean, required: true, default: false},
+    tokensused: { type: Number, required: true, default: 0}
 });
 
 const User = mongoose.model('User', userSchema);
 
 // Create new users
 const hashedPassword = await bcrypt.hash("4543mark", 10);
-const userMark = new User({ "markp", "markpearce47@gmail.com", password: hashedPassword });
-const user = new User({ username, email, password: hashedPassword });
-await user.save();
-await user.save();
+const userMark = new User({ "markp", "markpearce47@gmail.com", password: hashedPassword, useownkey: false, tokensused: 0 });
+await userMark.save();
+const hashedPassword = await bcrypt.hash("tfx2309", 10);
+const userLewis = new User({ "lewis", "lewisbrereton@outlook.com", password: hashedPassword, useownkey: false, tokensused: 0 });
+await userLewis.save();
 
 app.post('/login', (req, res) => {
    const username = req.body.username;
