@@ -45,6 +45,11 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
+aysnc function getUser( username ){
+    const user = await User.findone({username});
+    return user;
+}
+
 async function validateUser( username, password ){
     try{
         const user = await User.findOne({ username });
