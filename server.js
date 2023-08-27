@@ -97,7 +97,8 @@ app.post('/login', (req, res) => {
    const password = req.body.password;
    console.log("/login " + username + ", " + password );
    if (validateUser(username, password)) {
-      const token = jwt.sign(username, process.env.JWT_SECRET, { expiresIn: '1h' });
+      const user = getUser( username );
+      const token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: '1h' });
       res.json(token);
 } else {
      res.status(401).send('User does not exist or incorrect password.');}    
