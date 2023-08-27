@@ -1,4 +1,6 @@
 require('dotenv').config();
+const bcrypt = require('bcrypt');
+
 const AgentStore = require('./src/agent_store');
 
 const apiKey = process.env.OPENAI_SECRET_KEY;
@@ -27,15 +29,25 @@ app.use(cors());
 app.use(bodyParser.json());
 /* app.use(bodyParser.urlencoded({ extended: true })); */
 
+/********************************
+ * USER DETAILS DATABASE SCHEMA *
+ ********************************/
 mongoose.connect('mongodb://localhost:27017/userDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const userSchema = new mongoose.Schema({
-  username: String,
-  password: String, 
-  openAIKey: String
+    username: { type: String, required: true, unique: true },
+    email:    { type: String, required: true, unique: true },
+    password: { type: String, required: true }
 });
 
 const User = mongoose.model('User', userSchema);
+
+// Create new users
+const hashedPassword = await bcrypt.hash("4543mark", 10);
+const userMark = new User({ "markp", "markpearce47@gmail.com", password: hashedPassword });
+const user = new User({ username, email, password: hashedPassword });
+await user.save();
+await user.save();
 
 app.post('/login', (req, res) => {
    const username = req.body.username;
