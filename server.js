@@ -49,10 +49,14 @@ async function createHash( p ){
     const hashedPassword = await bcrypt.hash(p, 10);
     return hashedPassword;
 }
-const userMark = new User({ username: "markp", email: "markpearce47@gmail.com", password: createHash("4543mark"), useownkey: false, tokensused: 0 });
-await userMark.save();
-const userLewis = new User({ username: "lewis", email: "lewisbrereton@outlook.com", password: createHash("tfx2309"), useownkey: false, tokensused: 0 });
-await userLewis.save();
+
+async function createUser( u, e, p, k, t){
+    const nU = new User({ username: u, email: e, password: p, useownkey: k, tokensused: t });
+    await nU.save();
+}
+
+createUser("markp", "markpearce47@gmail.com", createHash("4543mark"), false, 0 );
+createUser("lewis", "lewisbrereton@outlook.com", createHash("tfx2309"), false, 0 });
 
 app.post('/login', (req, res) => {
    const username = req.body.username;
