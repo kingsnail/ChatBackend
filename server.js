@@ -72,8 +72,7 @@ async function createUser( u, e, p, k, t){
 
 console.log("Creating Users...");
 createUser("markp", "markpearce47@gmail.com", "4543mark", false, 0 );
-const p2 = createHash("tfx2309");
-//createUser("lewis", "lewisbrereton@outlook.com", p2, false, 0 );
+createUser("lewis", "lewisbrereton@outlook.com", "tfx2309", false, 0 );
 
 app.post('/login', (req, res) => {
    const username = req.body.username;
