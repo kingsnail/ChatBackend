@@ -44,14 +44,16 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-async function findUser( username ){
+async function valudateUser( username, password ){
     try{
         const user = await User.findOne({ username });
-        return user;
+        const pcheck = await bcrypt.compare(password, user.password);
+        return (user && pcheck);
     }
     catch (error){
-        console.log("Error in findUser.");
+        console.log("Error in validateUser.");
     }
+    return false;
 }
 
 // Create new users
@@ -89,7 +91,7 @@ app.post('/login', (req, res) => {
    const password = req.body.password;
    console.log("/login " + username + ", " + password );
    user = findUser(username);
-   if (user && await bcrypt.compare(password, user.password)) {
+   if () {
       const tokenstr = {token: "12345"}; 
       res.json(tokenstr);
 } else {
