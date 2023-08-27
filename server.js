@@ -46,6 +46,7 @@ const User = mongoose.model('User', userSchema);
 
 // Create new users
 async function createHash( p ){
+    console.log("createHash(" + p + ")");
     bcrypt.hash(p, 10)
     .then( hash => { console.log("hash for " + p + " = " + hash);
                      return (hash);
