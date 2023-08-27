@@ -48,8 +48,9 @@ const User = mongoose.model('User', userSchema);
 async function createHash( p ){
     console.log("createHash(" + p + ")");
     try{
-        const hashPwd = await bcrypt.hash(p, 10);
-        console.log("Done");
+        const salt = await bcrypt.genSalt(10);
+        const hashPwd = await bcrypt.hash(p, salt);
+        console.log("Done " + hashPwd);
         return hashPwd;
     }
     catch (error) {
