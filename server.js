@@ -59,7 +59,7 @@ async function createUser( u, e, p, k, t){
 
 console.log("Creating Users...");
 const p1 = createHash("4543mark");
-console.log("p1=" + JSON.stringify(p1);
+console.log("p1=" + JSON.stringify(p1));
 createUser("markp", "markpearce47@gmail.com", p1, false, 0 );
 const p2 = createHash("tfx2309");
 createUser("lewis", "lewisbrereton@outlook.com", p2, false, 0 );
