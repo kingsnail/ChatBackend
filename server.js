@@ -45,11 +45,13 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 // Create new users
-const hashedPassword = await bcrypt.hash("4543mark", 10);
-const userMark = new User({ "markp", "markpearce47@gmail.com", password: hashedPassword, useownkey: false, tokensused: 0 });
+const createHash( p ){
+    const hashedPassword = await bcrypt.hash(p, 10);
+    return hashedPassword;
+}
+const userMark = new User({ "markp", "markpearce47@gmail.com", password: createHash("4543mark"), useownkey: false, tokensused: 0 });
 await userMark.save();
-const hashedPassword = await bcrypt.hash("tfx2309", 10);
-const userLewis = new User({ "lewis", "lewisbrereton@outlook.com", password: hashedPassword, useownkey: false, tokensused: 0 });
+const userLewis = new User({ "lewis", "lewisbrereton@outlook.com", password: createHash("tfx2309"), useownkey: false, tokensused: 0 });
 await userLewis.save();
 
 app.post('/login', (req, res) => {
