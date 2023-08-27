@@ -90,8 +90,7 @@ app.post('/login', (req, res) => {
    const username = req.body.username;
    const password = req.body.password;
    console.log("/login " + username + ", " + password );
-   user = findUser(username);
-   if () {
+   if (validateUser(username, password)) {
       const tokenstr = {token: "12345"}; 
       res.json(tokenstr);
 } else {
