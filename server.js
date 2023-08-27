@@ -103,7 +103,7 @@ app.post('/login', (req, res) => {
    const password = req.body.password;
    console.log("/login " + username + ", " + password );
    if (validateUser(username, password)) {
-      const user = getUser( username );
+      const user = await getUser( username );
       const token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: '1h' });
       res.json(token);
 } else {
