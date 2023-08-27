@@ -60,8 +60,13 @@ async function createHash( p ){
 
 async function createUser( u, e, p, k, t){
     console.log("p=" + JSON.stringify(p));
-    const nU = new User({ username: u, email: e, password: p, useownkey: k, tokensused: t });
-    await nU.save();
+    try{
+        const nU = new User({ username: u, email: e, password: p, useownkey: k, tokensused: t });
+        await nU.save();
+    }
+    catch (error){
+        console.log("Save User Error: "  + error);
+    }
 }
 
 console.log("Creating Users...");
