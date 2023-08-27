@@ -41,6 +41,7 @@ app.post('/login', (req, res) => {
    const username = req.body.username;
    const password = req.body.password;
    const tokenstr = {token: "12345"};
+   console.log("/login " + username + ", " + password );
    res.json=JSON.stringify(tokenstr);
 });
 
