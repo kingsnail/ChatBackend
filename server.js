@@ -56,7 +56,7 @@ async function getUser( username ){
     }
 }
 
-async function validateUser( username, password ){
+function validateUser( username, password ){
     try{
         const user = await User.findOne({ username });
         const pcheck = await bcrypt.compare(password, user.password);
@@ -103,7 +103,7 @@ app.post('/login', (req, res) => {
    const password = req.body.password;
    console.log("/login " + username + ", " + password );
    if (validateUser(username, password)) {
-      const user = await getUser( username );
+      const user = getUser( username );
       const token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: '1h' });
       res.json(token);
 } else {
