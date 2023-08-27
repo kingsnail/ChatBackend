@@ -105,6 +105,7 @@ app.post('/login', (req, res) => {
    if (validateUser(username, password)) {
       getUser( username ).then((user) => {
             console.log("Read User=" + user);
+            console.log(typeof user);
             const token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: '1h' });
             res.json(token);
       });
