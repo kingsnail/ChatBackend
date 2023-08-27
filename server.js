@@ -138,11 +138,6 @@ function verifyToken(req, res, next) {
     }
 }
 
-app.get('/protected', verifyToken, (req, res) => {
-    res.json({ message: 'This is a protected route', user: req.user });
-});
-
-
 app.post('/register', (req, res) => {
   const newUser = new User({
     username: req.body.username,
@@ -158,7 +153,7 @@ app.post('/register', (req, res) => {
   });
 });
 
-app.post('/update-agent', (req, res) => {
+app.post('/update-agent', verifyToken, (req, res) => {
     const agentUUID = req.body.uuid;
     console.log("/update-agent called with data " + JSON.stringify(req.body));
     const agentType = myAgentStore.getAgent(agentUUID).getType();
@@ -177,7 +172,7 @@ app.post('/update-agent', (req, res) => {
 
 });
 
-app.post('/drop-on-output', (req, res) => {
+app.post('/drop-on-output', verifyToken, (req, res) => {
     try{
         const toAgent = req.body.toAgent;
         const fromAgent = req.body.fromAgent;
@@ -187,7 +182,7 @@ app.post('/drop-on-output', (req, res) => {
     }
 });
 
-app.post('/run-agent', (req, res) => {
+app.post('/run-agent', verifyToken, (req, res) => {
     try{
         const agentID = req.body.agentID;
         if (myAgentStore.checkAgentExists(agentID)){
@@ -206,7 +201,7 @@ app.post('/run-agent', (req, res) => {
     }
 });
 
-app.post('/agent-state', (req, res) => {
+app.post('/agent-state', verifyToken, (req, res) => {
     try{
         const agentID = req.body.agentID;
         if(myAgentStore.checkAgentExists(agentID)){
@@ -236,7 +231,7 @@ app.get('/standard-tools', verifyToken, (req, res) => {
    res.json(standardTools);
 });
 
-app.post('/drop-cell', (req, res) => {
+app.post('/drop-cell', verifyToken, (req, res) => {
   const receivedAgent = req.body.agent;
   const receivedRow  = req.body.disprow;
   const receivedCol  = req.body.dispcol;
