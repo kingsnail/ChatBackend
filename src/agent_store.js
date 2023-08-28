@@ -57,6 +57,23 @@ class AgentStore {
         const agentListArchiveJSON = JSON.stringify(agentListArchive);
         fs.writeFile ("archive.json", agentListArchiveJSON, function(err) { if (err) throw err; console.log('complete'); });
     }
+
+    /*
+     * Load a saved agent store
+     */
+    load( loadFrom ) {
+        fs.readFile('archive.json', 'utf8', function readFileCallback(err, data){
+            if (err){
+                console.log(err);
+            } else {
+                const agentListArchive = JSON.parse(data); //now it an object
+                const agentListSaveObjects = agentListArchive.saveData;
+                for (const [key, agentSaveObject] of Object.entries(agentListSaveObjects)){
+                     console.log("Rebuilld object: " + key );
+                }
+            }
+        });
+    }
 }
 
 module.exports = AgentStore;
