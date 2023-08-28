@@ -1,4 +1,4 @@
-tyconst fs = require('fs');
+const fs = require('fs');
 
 class AgentStore {
     constructor() {
