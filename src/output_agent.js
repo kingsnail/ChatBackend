@@ -1,8 +1,8 @@
 const Agent = require('./agent');
 
 class OutputAgent extends Agent {
-    constructor(name, displayRow, displayCol) {
-        super(name, displayRow, displayCol);
+    constructor(agentStore, name, displayRow, displayCol) {
+        super(agentStore, name, displayRow, displayCol);
         this.agentType = "output-agent";   
     }
         
