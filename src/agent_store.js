@@ -62,6 +62,7 @@ class AgentStore {
      * Load a saved agent store
      */
     load( loadFrom ) {
+        let self = this;
         fs.readFile('archive.json', 'utf8', function readFileCallback(err, data){
             if (err){
                 console.log(err);
@@ -70,7 +71,7 @@ class AgentStore {
                 const agentListSaveObjects = agentListArchive.saveData;
                 
                 // Force empty the agent store prior to regenerating
-                this.empty();
+                self.empty();
                 for (const [key, agentSaveObject] of Object.entries(agentListSaveObjects)){
                      console.log("Rebuilld object: " + agentSaveObject.type + "(" + key + ")" );
                 }
