@@ -141,6 +141,7 @@ class AgentStore {
                 displayCol: ag.getDisplayCol(),
                 type:       ag.getType()
             }
+            console.log("sig=" + JSON.stringify(sig));
             sigList[ key ] = sig;
         }
         return sigList;
