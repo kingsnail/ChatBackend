@@ -171,6 +171,7 @@ app.post('/load', verifyToken, (req, res) => {
  ********************************/
 app.post('/save', verifyToken, (req, res) => {
     console.log("/save called with data " + JSON.stringify(req.body));
+    myAgentStore.save(body.saveItem);
     res.json({status: "ok"});
 });
 
