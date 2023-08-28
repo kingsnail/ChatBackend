@@ -1,4 +1,4 @@
-const fs = require('fs');
+tyconst fs = require('fs');
 
 class AgentStore {
     constructor() {
@@ -70,7 +70,7 @@ class AgentStore {
                 const agentListSaveObjects = agentListArchive.saveData;
                 
                 // Force empty the agent store prior to regenerating
-                this.agentList = {};
+                this.empty();
                 for (const [key, agentSaveObject] of Object.entries(agentListSaveObjects)){
                      console.log("Rebuilld object: " + agentSaveObject.type + "(" + key + ")" );
                 }
