@@ -58,6 +58,25 @@ class AgentStore {
         fs.writeFile ("archive.json", agentListArchiveJSON, function(err) { if (err) throw err; console.log('complete'); });
     }
 
+    rebuildStandard(obj){
+        console.log("rebuild");
+    }
+    rebuildGenerator(obj){
+        console.log("rebuild");
+    }
+    rebuildMerge(obj){
+        console.log("rebuild");
+    }
+    rebuildOutput(obj){
+        console.log("rebuild");
+    }
+    rebuildInput(obj){
+        console.log("rebuild");
+    }
+    rebuildInitiator(obj){
+        console.log("rebuild");
+    }
+
     /*
      * Load a saved agent store
      */
@@ -72,8 +91,23 @@ class AgentStore {
                 
                 // Force empty the agent store prior to regenerating
                 self.empty();
-                for (const [key, agentSaveObject] of Object.entries(agentListSaveObjects)){
-                     console.log("Rebuilld object: " + agentSaveObject.type + "(" + key + ")" );
+                for (const [key, obj] of Object.entries(agentListSaveObjects)){
+                     console.log("Rebuilld object: " + obj.type + "(" + key + ")" );
+                    if (obj.type == 'standard-agent'){
+                        rebuildStandard( obj );
+                    } else if (obj.type == 'generator-agent'){
+                        rebuildGenerator( obj );
+                    } else if (obj.type == 'merge-agent'){
+                        rebuildMerge( obj );
+                    } else if (obj.type == 'output-agent'){
+                        rebuildOutput( obj );
+                    } else if (obj.type == 'input-agent'){
+                        rebuildInput( obj );
+                    } else if (obj.type == 'initiator-agent'){
+                        rebuildInitiator( obj );
+                    } else {
+                        console.log("Error: cannot rebuild object type " + obj.type + ", " + key);
+                    }
                 }
             }
         });
