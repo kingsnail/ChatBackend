@@ -10,6 +10,7 @@ class GeneralAgent extends Agent {
         this.userPrompt = "";
         this.outputPrompt = `You must format all of your output as a JSON object with a key value of 'chatResult'. Format 'chatResult' as a JSON list for each response item listed where each list item has the following tags: 'item' whos value is the serial number of the item; and 'text' whos value is the text of the item.`;
         this.output = [];
+        this.apiKey = apiKey;
         this.myAgent = new OpenAIAgent(apiKey);
         
     }
@@ -48,9 +49,17 @@ class GeneralAgent extends Agent {
         d['userPrompt'] = this.userPrompt;
         d['outputPrompt'] = this.outputPrompt;
         d['output'] = this.output;
+        d['apiKey'] = this.apiKey;
         return d;
     }
-
+    load(d){
+        super.load(d);
+        this.systemPrompt = d['systemPrompt'];
+        this.userPrompt   = d['userPrompt'];
+        this.outputPrompt = d['outputPrompt'];
+        this.output       = d['output'];
+        this.apiKey       = d['apiKey'];        
+    }
 }
 
 module.exports = GeneralAgent;
