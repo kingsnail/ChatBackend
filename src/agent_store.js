@@ -66,32 +66,32 @@ class AgentStore {
     }
 
     rebuildStandard(obj){
-        const newAgent = new GeneralAgent(obj.name, obj.displayRow, obj.displayCol, obj.apiKey);
+        const newAgent = new GeneralAgent(this, obj.name, obj.displayRow, obj.displayCol, obj.apiKey);
         newAgent.load( obj );
         this.add(newAgent);
     }
     rebuildGenerator(obj){
-        const newAgent = new GeneratorAgent(obj.name, obj.displayRow, obj.displayCol, obj.apiKey);
+        const newAgent = new GeneratorAgent(this, obj.name, obj.displayRow, obj.displayCol, obj.apiKey);
         newAgent.load( obj );
         this.add(newAgent);
     }
     rebuildMerge(obj){
-        const newAgent = new MergeAgent(obj.name, obj.displayRow, obj.displayCol);
+        const newAgent = new MergeAgent(this, obj.name, obj.displayRow, obj.displayCol);
         newAgent.load( obj );
         this.add(newAgent);
     }
     rebuildOutput(obj){
-        const newAgent = new OutputAgent(obj.name, obj.displayRow, obj.displayCol);
+        const newAgent = new OutputAgent(this, obj.name, obj.displayRow, obj.displayCol);
         newAgent.load( obj );
         this.add(newAgent);
     }
     rebuildInput(obj){
-        const newAgent = new InputAgent(obj.name, obj.displayRow, obj.displayCol);
+        const newAgent = new InputAgent(this, obj.name, obj.displayRow, obj.displayCol);
         newAgent.load( obj );
         this.add(newAgent);
     }
     rebuildInitiator(obj){
-        const newAgent = new InitiatorAgent(obj.name, obj.displayRow, obj.displayCol);
+        const newAgent = new InitiatorAgent(this, obj.name, obj.displayRow, obj.displayCol);
         newAgent.load( obj );
         this.add(newAgent);
     }
