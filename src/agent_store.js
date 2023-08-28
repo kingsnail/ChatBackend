@@ -138,7 +138,7 @@ class AgentStore {
             const sig = {
                 signature:  ag.getSignature(),
                 displayRow: ag.getDisplayRow(),
-                displayCol: ag.getDisplayRow(),
+                displayCol: ag.getDisplayCol(),
                 type:       ag.getType()
             }
             console.log("sig=" + JSON.stringify(sig));
