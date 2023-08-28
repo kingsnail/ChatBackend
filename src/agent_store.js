@@ -1,6 +1,8 @@
 const fs = require('fs');
-const GeneralAgent = require('./general_agent');
+
+const GeneralAgent   = require('./general_agent');
 const GeneratorAgent = require('./generator_agent');
+const InputAgent     = require('./input_agent');
 const InitiatorAgent = require('./initiator_agent');
 const MergeAgent     = require('./merge_agent');
 const OutputAgent    = require('./output_agent');
@@ -64,25 +66,34 @@ class AgentStore {
     }
 
     rebuildStandard(obj){
-        console.log("rebuild");
         const newAgent = new GeneralAgent(obj.name, obj.displayRow, obj.displayCol, obj.apiKey);
         newAgent.load( obj );
         this.add(newAgent);
     }
     rebuildGenerator(obj){
-        console.log("rebuild");
+        const newAgent = new GeneratorAgent(obj.name, obj.displayRow, obj.displayCol, obj.apiKey);
+        newAgent.load( obj );
+        this.add(newAgent);
     }
     rebuildMerge(obj){
-        console.log("rebuild");
+        const newAgent = new MergeAgent(obj.name, obj.displayRow, obj.displayCol);
+        newAgent.load( obj );
+        this.add(newAgent);
     }
     rebuildOutput(obj){
-        console.log("rebuild");
+        const newAgent = new OutputAgent(obj.name, obj.displayRow, obj.displayCol);
+        newAgent.load( obj );
+        this.add(newAgent);
     }
     rebuildInput(obj){
-        console.log("rebuild");
+        const newAgent = new InputAgent(obj.name, obj.displayRow, obj.displayCol);
+        newAgent.load( obj );
+        this.add(newAgent);
     }
     rebuildInitiator(obj){
-        console.log("rebuild");
+        const newAgent = new InitiatorAgent(obj.name, obj.displayRow, obj.displayCol);
+        newAgent.load( obj );
+        this.add(newAgent);
     }
 
     /*
