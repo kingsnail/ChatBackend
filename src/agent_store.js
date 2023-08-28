@@ -1,4 +1,9 @@
 const fs = require('fs');
+const GeneralAgent = require('./general_agent');
+const GeneratorAgent = require('./generator_agent');
+const InitiatorAgent = require('./initiator_agent');
+const MergeAgent     = require('./merge_agent');
+const OutputAgent    = require('./output_agent');
 
 class AgentStore {
     constructor() {
@@ -60,7 +65,7 @@ class AgentStore {
 
     rebuildStandard(obj){
         console.log("rebuild");
-        const newAgent = new standardAgent(obj.name, obj.displayRow, obj.displayCol, obj.apiKey);
+        const newAgent = new GeneralAgent(obj.name, obj.displayRow, obj.displayCol, obj.apiKey);
         newAgent.load( obj );
         this.add(newAgent);
     }
