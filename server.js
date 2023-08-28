@@ -199,6 +199,23 @@ app.post('/update-agent', verifyToken, (req, res) => {
 });
 
 /********************************
+ *           /signatures        *
+ ********************************/
+app.post('/signatures', verifyToken, (req, res) => {
+    console.log("/signatures");
+    let sigList = {};
+    for (const key, ag in myAgentStore) {
+        const sig = {signature:  ag.getSignature(),
+                     displayRow: ag.getDisplayRow(),
+                     displayCol: ag.getDisplayCol()
+                    };
+        sigList[ key ] = sig;
+    }
+    res.json(sigList);
+});
+
+
+/********************************
  *           /drop-on-output    *
  ********************************/
 app.post('/drop-on-output', verifyToken, (req, res) => {
