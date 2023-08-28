@@ -163,6 +163,7 @@ app.post('/register', (req, res) => {
  ********************************/
 app.post('/load', verifyToken, (req, res) => {
     console.log("/load called with data " + JSON.stringify(req.body));
+    myAgentStore.load(req.body.loadItem);
     res.json({status: "ok"});
 });
 
