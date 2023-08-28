@@ -98,6 +98,9 @@ console.log("Creating Users...");
 createUser("markp", "markpearce47@gmail.com", "4543mark", false, 0 );
 createUser("lewis", "lewisbrereton@outlook.com", "tfx2309", false, 0 );
 
+/********************************
+ *           /login             *
+ ********************************/
 app.post('/login', (req, res) => {
    const username = req.body.username;
    const password = req.body.password;
@@ -138,6 +141,9 @@ function verifyToken(req, res, next) {
     }
 }
 
+/********************************
+ *           /register          *
+ ********************************/
 app.post('/register', (req, res) => {
   const newUser = new User({
     username: req.body.username,
@@ -152,7 +158,25 @@ app.post('/register', (req, res) => {
     }
   });
 });
+/********************************
+ *           /load              *
+ ********************************/
+app.post('/load', verifyToken, (req, res) => {
+    console.log("/load called with data " + JSON.stringify(req.body));
+    res.json({status: "ok"});
+});
 
+/********************************
+ *           /save              *
+ ********************************/
+app.post('/save', verifyToken, (req, res) => {
+    console.log("/save called with data " + JSON.stringify(req.body));
+    res.json({status: "ok"});
+});
+
+/********************************
+ *           /update-agent      *
+ ********************************/
 app.post('/update-agent', verifyToken, (req, res) => {
     const agentUUID = req.body.uuid;
     console.log("/update-agent called with data " + JSON.stringify(req.body));
@@ -172,6 +196,9 @@ app.post('/update-agent', verifyToken, (req, res) => {
 
 });
 
+/********************************
+ *           /drop-on-output    *
+ ********************************/
 app.post('/drop-on-output', verifyToken, (req, res) => {
     try{
         const toAgent = req.body.toAgent;
@@ -182,6 +209,9 @@ app.post('/drop-on-output', verifyToken, (req, res) => {
     }
 });
 
+/********************************
+ *           /run-agent         *
+ ********************************/
 app.post('/run-agent', verifyToken, (req, res) => {
     try{
         const agentID = req.body.agentID;
@@ -201,6 +231,9 @@ app.post('/run-agent', verifyToken, (req, res) => {
     }
 });
 
+/********************************
+ *           /agent-state       *
+ ********************************/
 app.post('/agent-state', verifyToken, (req, res) => {
     try{
         const agentID = req.body.agentID;
@@ -218,6 +251,9 @@ app.post('/agent-state', verifyToken, (req, res) => {
     }
 });
 
+/********************************
+ *           /standard-tools    *
+ ********************************/
 const standardTools = [
   { id: 'ST1', name: 'Initiator',       type: 'initiator-agent', color: 'green'},
   { id: 'ST2', name: 'Input Agent',     type: 'input-agent',     color: 'red' },
@@ -231,6 +267,9 @@ app.get('/standard-tools', verifyToken, (req, res) => {
    res.json(standardTools);
 });
 
+/********************************
+ *           /drop-cell         *
+ ********************************/
 app.post('/drop-cell', verifyToken, (req, res) => {
   const receivedAgent = req.body.agent;
   const receivedRow  = req.body.disprow;
