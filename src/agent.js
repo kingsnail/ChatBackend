@@ -37,6 +37,7 @@ class Agent {
         return this.displayRow;
     }
     getDisplayCol(){
+        console.log("getDisplayCol() = " + this.displayCol);
         return this.displayCol;
     }
 
