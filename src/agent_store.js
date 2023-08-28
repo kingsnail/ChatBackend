@@ -136,9 +136,9 @@ class AgentStore {
         let sigList = {}
         for (const [key, ag] of Object.entries(this.agentList)) {
             const sig = {
-                signature = ag.getSignature(),
-                displayRow = ag.getDisplayRow(),
-                displayCol = ag.getDisplayCol()
+                signature:  ag.getSignature(),
+                displayRow: ag.getDisplayRow(),
+                displayCol: ag.getDisplayCol()
             }
             sigList[ key ] = sig;
         }
