@@ -94,17 +94,17 @@ class AgentStore {
                 for (const [key, obj] of Object.entries(agentListSaveObjects)){
                      console.log("Rebuilld object: " + obj.type + "(" + key + ")" );
                     if (obj.type == 'standard-agent'){
-                        rebuildStandard( obj );
+                        self.rebuildStandard( obj );
                     } else if (obj.type == 'generator-agent'){
-                        rebuildGenerator( obj );
+                        self.rebuildGenerator( obj );
                     } else if (obj.type == 'merge-agent'){
-                        rebuildMerge( obj );
+                        self.rebuildMerge( obj );
                     } else if (obj.type == 'output-agent'){
-                        rebuildOutput( obj );
+                        self.rebuildOutput( obj );
                     } else if (obj.type == 'input-agent'){
-                        rebuildInput( obj );
+                        self.rebuildInput( obj );
                     } else if (obj.type == 'initiator-agent'){
-                        rebuildInitiator( obj );
+                        self.rebuildInitiator( obj );
                     } else {
                         console.log("Error: cannot rebuild object type " + obj.type + ", " + key);
                     }
