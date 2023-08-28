@@ -68,8 +68,11 @@ class AgentStore {
             } else {
                 const agentListArchive = JSON.parse(data); //now it an object
                 const agentListSaveObjects = agentListArchive.saveData;
+                
+                // Force empty the agent store prior to regenerating
+                this.agentList = {};
                 for (const [key, agentSaveObject] of Object.entries(agentListSaveObjects)){
-                     console.log("Rebuilld object: " + key );
+                     console.log("Rebuilld object: " + agentSaveObject.type + "(" + key + ")" );
                 }
             }
         });
