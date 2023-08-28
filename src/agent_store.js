@@ -60,6 +60,9 @@ class AgentStore {
 
     rebuildStandard(obj){
         console.log("rebuild");
+        const newAgent = new standardAgent(obj.name, obj.displayRow, obj.displayCol, obj.apiKey);
+        newAgent.load( obj );
+        this.add(newAgent);
     }
     rebuildGenerator(obj){
         console.log("rebuild");
