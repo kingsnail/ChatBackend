@@ -43,6 +43,9 @@ class Agent {
     getName(){
         return this.name;
     }
+    setUUID( uuid ) {
+        this.uuid = uuid;
+    }
     
     setName(n) {
         this.name = n;
