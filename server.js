@@ -203,14 +203,7 @@ app.post('/update-agent', verifyToken, (req, res) => {
  ********************************/
 app.post('/signatures', verifyToken, (req, res) => {
     console.log("/signatures");
-    let sigList = {};
-    for (const key, ag in myAgentStore) {
-        const sig = {signature:  ag.getSignature(),
-                     displayRow: ag.getDisplayRow(),
-                     displayCol: ag.getDisplayCol()
-                    };
-        sigList[ key ] = sig;
-    }
+    let sigList = myAgentStore.getAllSignatures();
     res.json(sigList);
 });
 
