@@ -131,7 +131,14 @@ class AgentStore {
             }
         });
     }
-
+    getNameIndex(){
+        let nameList = {}
+        for (const [key, ag] of Object.entries(this.agentList)) {
+            nameList[ key ] = ag.getName() }
+        }
+        return nameList;
+    }
+    
     getAllSignatures(){
         let sigList = {}
         for (const [key, ag] of Object.entries(this.agentList)) {
