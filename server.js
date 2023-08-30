@@ -218,7 +218,7 @@ app.post('/drop-on-output', verifyToken, (req, res) => {
         console.log("/drop-on-output " + toAgent + ", " + fromAgent);
         if (myAgentStore.checkAgentExists(toAgent) && myAgentStore.checkAgentExists(fromAgent)){
              myAgentStore.getAgent(toAgent).subscribe(fromAgent);
-             myAgentStore.getAgent(fromAgent).addsubscription(toAgent);
+             myAgentStore.getAgent(fromAgent).addSubscription(toAgent);
              console.log("..subscribed");
         }
     }
