@@ -207,6 +207,15 @@ app.post('/signatures', verifyToken, (req, res) => {
     res.json(sigList);
 });
 
+/********************************
+ *           /names             *
+ ********************************/
+app.post('/names', verifyToken, (req, res) => {
+    console.log("/names");
+    let nameList = myAgentStore.getNameList();
+    res.json(nameList);
+});
+
 
 /********************************
  *           /drop-on-output    *
