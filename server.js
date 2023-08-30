@@ -212,7 +212,7 @@ app.post('/signatures', verifyToken, (req, res) => {
  ********************************/
 app.post('/names', verifyToken, (req, res) => {
     console.log("/names");
-    let nameList = myAgentStore.getNameList();
+    let nameList = myAgentStore.getNameIndex();
     res.json(nameList);
 });
 
