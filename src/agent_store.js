@@ -132,9 +132,9 @@ class AgentStore {
         });
     }
     getNameIndex(){
-        let nameList = {}
+        let nameList = {};
         for (const [key, ag] of Object.entries(this.agentList)) {
-            nameList[ key ] = ag.getName() }
+            nameList[ key ] = ag.getName()
         }
         return nameList;
     }
