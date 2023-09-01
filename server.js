@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const AgentStore = require('./src/agent_store');
-const UserSession = require(./src/user_session');
+const UserSession = require('./src/user_session');
     
 const apiKey = process.env.OPENAI_SECRET_KEY;
 
