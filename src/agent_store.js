@@ -101,18 +101,14 @@ class AgentStore {
     /*
      * Load a saved agent store
      */
-    load( loadFrom ) {
+    load( loadData ) {
+        console.log("load: " + loadData);
         let self = this;
-        fs.readFile('archive.json', 'utf8', function readFileCallback(err, data){
-            if (err){
-                console.log(err);
-            } else {
-                const agentListArchive = JSON.parse(data); //now it an object
-                const agentListSaveObjects = agentListArchive.saveData;
+        const agentListSaveObjects = JSON.parse(loadData); //now it an object
                 
-                // Force empty the agent store prior to regenerating
-                self.empty();
-                for (const [key, obj] of Object.entries(agentListSaveObjects)){
+        // Force empty the agent store prior to regenerating
+        self.empty();
+        for (const [key, obj] of Object.entries(agentListSaveObjects)){
                      console.log("Rebuilld object: " + obj.type + "(" + key + ")" );
                     if (obj.type == 'standard-agent'){
                         self.rebuildStandard( obj );
@@ -129,8 +125,7 @@ class AgentStore {
                     } else {
                         console.log("Error: cannot rebuild object type " + obj.type + ", " + key);
                     }
-                }
-            }
+            }   
         });
     }
     getNameIndex(){
