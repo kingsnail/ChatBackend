@@ -135,7 +135,7 @@ app.post('/login', (req, res) => {
             console.log("Read User=" + user);
             myUserSession.setUserId(user._id);
             console.log(typeof user);
-            console.log("user._id=" + userID);
+            console.log("user._id=" + user._id);
             const userObj = { username: user.username, id: user._id };
             const token = jwt.sign(userObj, process.env.JWT_SECRET, { expiresIn: '1h' });
             res.json({token: token});
