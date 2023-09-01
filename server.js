@@ -63,7 +63,7 @@ const userSchema = new mongoose.Schema({
     email:      { type: String, required: true, unique: true },
     password:   { type: String, required: true },
     useownkey:  { type: Boolean, required: true, default: false},
-    ownkey:     { type String, required: false},
+    ownkey:     { type: String, required: false},
     tokensused: { type: Number, required: true, default: 0}
 });
 
