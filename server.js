@@ -35,11 +35,20 @@ app.use(bodyParser.json());
  ********************************/
 mongoose.connect('mongodb://localhost:27017/userDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
+const saveItemSchema = new mongoose.Schema({
+    owner: { type: String, required: true },
+    name:  { type: String, required: true },
+    data:  { type: String}
+});
+
+const DataSets = mongoose.model('DataSets', saveItemSchema);
+
 const userSchema = new mongoose.Schema({
     username:   { type: String, required: true, unique: true },
     email:      { type: String, required: true, unique: true },
     password:   { type: String, required: true },
     useownkey:  { type: Boolean, required: true, default: false},
+    ownkey:     { type String, required: false},
     tokensused: { type: Number, required: true, default: 0}
 });
 
