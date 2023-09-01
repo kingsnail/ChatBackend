@@ -53,14 +53,17 @@ class AgentStore {
     /* 
      * Save the contents of the agent store.
      */
-    save( saveTo ) {
+    save( name, toolbox, user ) {
         let agentListSaveObjects = {};
         for (const [key, value] of Object.entries(this.agentList)) {
             agentListSaveObjects[key] = value.save();
         }
-        const agentListArchive = { saveName: saveTo, 
-                                   saveData: agentListSaveObjects
+        const agentListArchive = { owner: user,
+                                   name: saveTo, 
+                                   data: agentListSaveObjects,
+                                   toolbox: toolbox
                                  };
+        
         const agentListArchiveJSON = JSON.stringify(agentListArchive);
         fs.writeFile ("archive.json", agentListArchiveJSON, function(err) { if (err) throw err; console.log('complete'); });
     }
