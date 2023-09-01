@@ -125,9 +125,9 @@ class AgentStore {
                     } else {
                         console.log("Error: cannot rebuild object type " + obj.type + ", " + key);
                     }
-            }   
-        });
-    }
+        }   
+    };
+    
     getNameIndex(){
         let nameList = {};
         for (const [key, ag] of Object.entries(this.agentList)) {
