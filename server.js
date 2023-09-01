@@ -73,10 +73,12 @@ async function getDataSet( name, user ){
 
 async function listAllDatasets( user) {
     try {
+        console.log("listAllDatasets()");
         const query = { owner: user };
         const list = await DataSet.find( query );
         let dataSetsList = [];
         for (var i = 0, l = list.length; i < l; i++) {
+             console.log("..adding " + list[i].name);
              dataSetsList.push(list[i].name);
         }        
         console.log("listAllDatasets = " + JSON.stringify( dataSetsList ));
@@ -224,7 +226,7 @@ app.post('/list-datasets', verifyToken, (req, res) => {
     const user = myUserSession.getUserId();
     console.log("Listing datasets for user " + user);
     listAllDatasets( user).then(( listOfDataSets ) => {
-        res.json(JSON.stringify(listOfDataSets));    
+        res.json(JSON.stringify({listOfDataSets}));    
     });
 });
 
