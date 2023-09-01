@@ -60,12 +60,11 @@ class AgentStore {
         }
         const agentListArchive = { owner: user,
                                    name: saveTo, 
-                                   data: agentListSaveObjects,
+                                   data: JSON.stringify(agentListSaveObjects),
                                    toolbox: toolbox
                                  };
-        
-        const agentListArchiveJSON = JSON.stringify(agentListArchive);
-        fs.writeFile ("archive.json", agentListArchiveJSON, function(err) { if (err) throw err; console.log('complete'); });
+
+        return agentListArchive;
     }
 
     rebuildStandard(obj){
