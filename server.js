@@ -38,7 +38,8 @@ mongoose.connect('mongodb://localhost:27017/userDB', { useNewUrlParser: true, us
 const saveItemSchema = new mongoose.Schema({
     owner: { type: String, required: true },
     name:  { type: String, required: true },
-    data:  { type: String}
+    data:  { type: String},
+    toolbox: { type: Boolean, default: false}
 });
 
 const DataSets = mongoose.model('DataSets', saveItemSchema);
