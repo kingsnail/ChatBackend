@@ -196,7 +196,7 @@ app.post('/save', verifyToken, (req, res) => {
     console.log("/save called with data " + JSON.stringify(req.body));
     const saveName = req.body.name;
     const saveToolBox = req.body.toolbox;
-    myAgentStore.save(req.body.saveItem);
+     createDataset(myAgentStore.save(saveName, saveToolBox, UserID));
     res.json({status: "ok"});
 });
 
