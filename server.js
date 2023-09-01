@@ -3,7 +3,8 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const AgentStore = require('./src/agent_store');
-
+const UserSession = require(./src/user_session');
+    
 const apiKey = process.env.OPENAI_SECRET_KEY;
 
 console.log("API Key:", apiKey);
@@ -20,8 +21,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-
-let   userID = "";
 
 //
 // Create the new agent store to hold all agent details.
