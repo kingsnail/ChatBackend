@@ -75,7 +75,12 @@ async function listAllDatasets( user) {
     try {
         const query = { owner: user };
         const list = await DataSet.find( query );
-        console.log("listAllDatasets = " + JSON.stringify( list ));
+        let dataSetsList = [];
+        for (var i = 0, l = list.length; i < l; i++) {
+             dataSetsList.push(list[i].name);
+        }        
+        console.log("listAllDatasets = " + JSON.stringify( dataSetsList ));
+        return dataSetsList;
     } catch (error){
         console.log("Error: listAllDatasets " + error);
     }
