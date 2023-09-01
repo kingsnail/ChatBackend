@@ -56,6 +56,21 @@ async function createDataset( d ){
         console.log("Error: createDataset: " + error );
     }
 }
+
+async function getDataSet( name, user ){
+    try{
+        const query = { name: name,
+                        owner: user
+                      };
+        const data = await DataSet.findOne(query);
+        console.log("getDataSet = " + JSON.stringify(data));
+        return data;
+    }
+    catch (error){
+        console.log("Error: getDataSet " + error);
+    }
+}
+
 /********************************
  * USER DETAILS DATABASE SCHEMA *
  ********************************/
