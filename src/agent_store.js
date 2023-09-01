@@ -59,7 +59,7 @@ class AgentStore {
             agentListSaveObjects[key] = value.save();
         }
         const agentListArchive = { owner: user,
-                                   name: saveTo, 
+                                   name: name, 
                                    data: JSON.stringify(agentListSaveObjects),
                                    toolbox: toolbox
                                  };
