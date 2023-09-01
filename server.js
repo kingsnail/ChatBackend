@@ -21,6 +21,8 @@ const cors = require('cors');
 
 const app = express();
 
+let   userID = "";
+
 //
 // Create the new agent store to hold all agent details.
 //
@@ -130,6 +132,7 @@ app.post('/login', (req, res) => {
    if (validateUser(username, password)) {
       getUser( username ).then((user) => {
             console.log("Read User=" + user);
+            let userID = user._id;
             console.log(typeof user);
             const userObj = { username: user.username, id: user._id };
             const token = jwt.sign(userObj, process.env.JWT_SECRET, { expiresIn: '1h' });
@@ -196,7 +199,8 @@ app.post('/save', verifyToken, (req, res) => {
     console.log("/save called with data " + JSON.stringify(req.body));
     const saveName = req.body.name;
     const saveToolBox = req.body.toolbox;
-     createDataset(myAgentStore.save(saveName, saveToolBox, UserID));
+    console.log("Saving " + saveName + ", " + saveToolBox + " for " + userID);
+     createDataset(myAgentStore.save(saveName, saveToolBox, userID));
     res.json({status: "ok"});
 });
 
