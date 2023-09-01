@@ -205,8 +205,14 @@ app.post('/register', (req, res) => {
  ********************************/
 app.post('/load', verifyToken, (req, res) => {
     console.log("/load called with data " + JSON.stringify(req.body));
-    myAgentStore.load(req.body.loadItem);
-    res.json({status: "ok"});
+    const name = req.body.name;
+    const user = myUserSession.getUserId();
+    console.log("Loading " + name + " for user " + user);
+    getDataSet( name, user).then((dataRecord) => {
+        myAgentStore.load(dataRecord.data);
+        res.json({status: "ok"});    
+    });
+    
 });
 
 /********************************
