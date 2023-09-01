@@ -71,6 +71,16 @@ async function getDataSet( name, user ){
     }
 }
 
+async function listAllDatasets( user) {
+    try {
+        const query = { owner: user };
+        const list = await DataSet.find( query );
+        console.log("listAllDatasets = " + JSON.stringify( list ));
+    } catch (error){
+        console.log("Error: listAllDatasets " + error);
+    }
+}
+
 /********************************
  * USER DETAILS DATABASE SCHEMA *
  ********************************/
@@ -200,6 +210,20 @@ app.post('/register', (req, res) => {
     }
   });
 });
+
+/********************************
+ *           /list-datasets     *
+ ********************************/
+app.post('/list-datasets', verifyToken, (req, res) => {
+    console.log("/list-datasets called with data " + JSON.stringify(req.body));
+    const user = myUserSession.getUserId();
+    console.log("Listing datasets for user " + user);
+    listAllDatasets( user).then(( listOfDataSets ) => {
+        res.json(JSON.stringify(listOfDataSets));    
+    });
+});
+
+
 /********************************
  *           /load              *
  ********************************/
