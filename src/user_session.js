@@ -5,10 +5,17 @@ class UserSession {
     }
 
     /*
-     * Return the agent with the corresponding UUID. Returns null if the agent does not exist.
+     * Return the stored user id.
      */
     getUserId( ){
         return this.userId;
+    }
+    
+    /*
+     * Set the user id.
+     */
+    setUserId( u ){
+        this.userId = u;
     }
 
 }
