@@ -42,7 +42,16 @@ const saveItemSchema = new mongoose.Schema({
     toolbox: { type: Boolean, default: false}
 });
 
-const DataSets = mongoose.model('DataSets', saveItemSchema);
+const DataSet = mongoose.model('DataSets', saveItemSchema);
+
+async function createDataset( d ){
+    try {
+        const nD = new DataSet(d);
+        await nD.save();
+    } catch (error){
+        console.log("Error: createDataset: " + error );
+    }
+}
 
 const userSchema = new mongoose.Schema({
     username:   { type: String, required: true, unique: true },
