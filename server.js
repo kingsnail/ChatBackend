@@ -30,9 +30,9 @@ app.use(cors());
 app.use(bodyParser.json());
 /* app.use(bodyParser.urlencoded({ extended: true })); */
 
-/********************************
- * USER DETAILS DATABASE SCHEMA *
- ********************************/
+/*********************************
+ * SAVED DATASET DATABASE SCHEMA *
+ *********************************/
 mongoose.connect('mongodb://localhost:27017/userDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const saveItemSchema = new mongoose.Schema({
@@ -47,12 +47,15 @@ const DataSet = mongoose.model('DataSets', saveItemSchema);
 async function createDataset( d ){
     try {
         const nD = new DataSet(d);
-        await nD.save();
+        await nD.save()
+        console.log("Saved Data Set");
     } catch (error){
         console.log("Error: createDataset: " + error );
     }
 }
-
+/********************************
+ * USER DETAILS DATABASE SCHEMA *
+ ********************************/
 const userSchema = new mongoose.Schema({
     username:   { type: String, required: true, unique: true },
     email:      { type: String, required: true, unique: true },
