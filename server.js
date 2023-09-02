@@ -180,6 +180,11 @@ app.post('/login', (req, res) => {
             console.log("Read User=" + user);
             myUserSession.setUserId(user._id);
             myUserSession.setUserName(username);
+            if(use.useownkey) {
+                myUserSession.setApiKeyToUse(user.ownkey);
+            } else {
+                myUserSession.setApiKeyToUse(process.env.OPENAI_SECRET_KEY);
+            }
             console.log(typeof user);
             console.log("user._id=" + user._id);
             const userObj = { username: user.username, id: user._id };
@@ -344,6 +349,11 @@ app.post('/update-user-settings', verifyToken, (req, res) => {
            userRecord.ownkey = apiKey;
            userRecord.useownkey = useOwnKey;
            updateUserDetails( apiKey, useOwnKey, myUserSession.getUserName()).then(() => {
+                if(userRecord.useownkey) {
+                    myUserSession.setApiKeyToUse(userRecord.ownkey);
+                } else {
+                    myUserSession.setApiKeyToUse(process.env.OPENAI_SECRET_KEY);
+                }
                res.json(userRecord);       
            });
         } else {
