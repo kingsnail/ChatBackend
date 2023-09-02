@@ -2,6 +2,7 @@
 class UserSession {
     constructor(userId) {
         this.userId = userId;
+        this.userName = "";
     }
 
     /*
@@ -16,6 +17,19 @@ class UserSession {
      */
     setUserId( u ){
         this.userId = u;
+    }
+    /*
+     * Return the stored user name.
+     */
+    getUserName( ){
+        return this.userName;
+    }
+    
+    /*
+     * Set the user id.
+     */
+    setUserName( u ){
+        this.userName = u;
     }
 
 }
