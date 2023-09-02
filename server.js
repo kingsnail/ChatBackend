@@ -305,6 +305,16 @@ app.post('/signatures', verifyToken, (req, res) => {
 });
 
 /********************************
+ *           /get-user-settings *
+ ********************************/
+app.post('/get-user-settings', verifyToken, (req, res) => {
+    console.log("/get-user-settings");
+    getUser( myUserSession.getUserName() ).then( (userRecord) => {
+        res.json(userRecord);    
+    });
+});
+
+/********************************
  *           /names             *
  ********************************/
 app.post('/names', verifyToken, (req, res) => {
