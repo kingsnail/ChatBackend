@@ -139,11 +139,11 @@ async function createHash( p ){
     }
 }
 
-async function createUser( u, e, p, k, t){
+async function createUser( u, e, p, k, ok, t){
     console.log("p=" + JSON.stringify(p));
     try{
         const hP = await createHash( p );
-        const nU = new User({ username: u, email: e, password: hP, useownkey: k, tokensused: t });
+        const nU = new User({ username: u, email: e, password: hP, useownkey: k, ownkey: ok, tokensused: t });
         await nU.save();
     }
     catch (error){
@@ -152,8 +152,8 @@ async function createUser( u, e, p, k, t){
 }
 
 console.log("Creating Users...");
-createUser("markp", "markpearce47@gmail.com", "4543mark", false, 0 );
-createUser("lewis", "lewisbrereton@outlook.com", "tfx2309", false, 0 );
+createUser("markp", "markpearce47@gmail.com", "4543mark", false, '', 0 );
+createUser("lewis", "lewisbrereton@outlook.com", "tfx2309", false, '', 0 );
 
 /********************************
  *           /login             *
