@@ -465,6 +465,7 @@ app.post('/drop-cell', verifyToken, (req, res) => {
   const receivedAgent = req.body.agent;
   const receivedRow  = req.body.disprow;
   const receivedCol  = req.body.dispcol;
+  const apiKey = myUserSession.getApiKeyToUse();
   console.log("/drop-cell = " + JSON.stringify(req.body));
   if (receivedAgent == "standard-agent"){
       const newAgent = new GeneralAgent(myAgentStore, receivedAgent, receivedRow, receivedCol, apiKey);
