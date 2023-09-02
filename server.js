@@ -117,10 +117,13 @@ async function updateUserDetails( apiKey, useKey, user){
     const filter = { username: user };
     const update = { $set: { ownkey: apiKey, useownkey: useKey } };
 
-    User.updateOne(filter, update, (err, result) => {
-        if (err) throw err;
-        console.log('Document updated successfully');
-    });
+    User.updateOne(filter, update).exec()
+       .then(result => {
+           console.log('Document updated successfully');
+       })
+       .catch(err => {
+           console.error(err);
+       });
 }
 
 async function validateUser( username, password ){
