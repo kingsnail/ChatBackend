@@ -166,6 +166,7 @@ app.post('/login', (req, res) => {
       getUser( username ).then((user) => {
             console.log("Read User=" + user);
             myUserSession.setUserId(user._id);
+            myUserSession.setUserName(username);
             console.log(typeof user);
             console.log("user._id=" + user._id);
             const userObj = { username: user.username, id: user._id };
@@ -310,7 +311,11 @@ app.post('/signatures', verifyToken, (req, res) => {
 app.post('/get-user-settings', verifyToken, (req, res) => {
     console.log("/get-user-settings");
     getUser( myUserSession.getUserName() ).then( (userRecord) => {
-        res.json(userRecord);    
+        if (userRecord){
+           res.json(userRecord);
+        } else {
+           res.json("Error");
+        }
     });
 });
 
