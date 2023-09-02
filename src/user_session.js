@@ -3,6 +3,7 @@ class UserSession {
     constructor(userId) {
         this.userId = userId;
         this.userName = "";
+        this.apiKeyToUse = "";
     }
 
     /*
@@ -32,6 +33,13 @@ class UserSession {
         this.userName = u;
     }
 
+    setApiKeyToUse( k ) {
+        this.apiKeyToUse = k;
+    }
+    
+    getApiKeyToUse(){
+        return this.apiKeyToUse;
+    }
 }
 
 module.exports = UserSession;
