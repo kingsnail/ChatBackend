@@ -233,7 +233,7 @@ app.post('/list-datasets', verifyToken, (req, res) => {
 /********************************
  *           /execute           *
  ********************************/
-app.post('/load', verifyToken, (req, res) => {
+app.post('/execute', verifyToken, (req, res) => {
     console.log("/execute called with data " + JSON.stringify(req.body));
     const name = req.body.name;
     const user = myUserSession.getUserId();
