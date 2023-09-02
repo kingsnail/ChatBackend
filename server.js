@@ -176,7 +176,7 @@ app.post('/login', (req, res) => {
             console.log("Read User=" + user);
             myUserSession.setUserId(user._id);
             myUserSession.setUserName(username);
-            if(use.useownkey) {
+            if(user.useownkey) {
                 myUserSession.setApiKeyToUse(user.ownkey);
             } else {
                 myUserSession.setApiKeyToUse(process.env.OPENAI_SECRET_KEY);
