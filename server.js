@@ -113,6 +113,16 @@ async function getUser( username ){
     }
 }
 
+async function updateUserDetails( apiKey, useKey, user){
+    const filter = { username: user };
+    const update = { $set: { ownkey: apiKey, useownkey: useKey } };
+
+    User.updateOne(filter, update, (err, result) => {
+        if (err) throw err;
+        console.log('Document updated successfully');
+    });
+}
+
 async function validateUser( username, password ){
     try{
         const user = await User.findOne({ username });
@@ -330,8 +340,9 @@ app.post('/update-user-settings', verifyToken, (req, res) => {
         if (userRecord){
            userRecord.ownkey = apiKey;
            userRecord.useownkey = useOwnKey;
-           // ToDo now update the record.
-           res.json(userRecord);
+           updateUserDetails( apiKey, useOwnKey, myUserSession.getUserName()).then(() => {
+               res.json(userRecord);       
+           });
         } else {
            res.json("Error");
         }
