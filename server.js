@@ -250,8 +250,12 @@ app.post('/load', verifyToken, (req, res) => {
     const user = myUserSession.getUserId();
     console.log("Loading " + name + " for user " + user);
     getDataSet( name, user).then((dataRecord) => {
-        myAgentStore.load(dataRecord.data);
-        res.json({status: "ok"});    
+        if (dataRecord.data){
+            myAgentStore.load(dataRecord.data);
+            res.json({status: "ok"});    
+        } else {
+            console.log("Error onload. dataRecord = " + JSON.stringify(dataRecord));
+        }
     });
     
 });
