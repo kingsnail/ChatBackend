@@ -309,7 +309,24 @@ app.post('/signatures', verifyToken, (req, res) => {
  *           /get-user-settings *
  ********************************/
 app.post('/get-user-settings', verifyToken, (req, res) => {
-    console.log("/get-user-settings");
+    console.log("/get-user-settings" + JSON.stringify(req.body));
+    const apiKey = req.body.apiKey;
+    const useOwnKey = req.body.useOwnApiKey;
+    getUser( myUserSession.getUserName() ).then( (userRecord) => {
+        if (userRecord){
+           res.json(userRecord);
+        } else {
+           res.json("Error");
+        }
+    });
+});
+
+/********************************
+ *           /update-user-settings *
+ ********************************/
+app.post('/update-user-settings', verifyToken, (req, res) => {
+    console.log("/update-user-settingss");
+    c
     getUser( myUserSession.getUserName() ).then( (userRecord) => {
         if (userRecord){
            res.json(userRecord);
