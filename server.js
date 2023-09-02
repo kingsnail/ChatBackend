@@ -79,7 +79,7 @@ async function listAllDatasets( user) {
         let dataSetsList = [];
         for (var i = 0, l = list.length; i < l; i++) {
              console.log("..adding " + list[i].name);
-             dataSetsList.push(list[i].name);
+             dataSetsList.push({name: list[i].name});
         }        
         console.log("listAllDatasets = " + JSON.stringify( dataSetsList ));
         return dataSetsList;
