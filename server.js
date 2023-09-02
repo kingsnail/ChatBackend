@@ -390,9 +390,9 @@ app.get('/standard-tools', verifyToken, (req, res) => {
  *           /user-tools        *
  ********************************/
 app.get('/user-tools', verifyToken, (req, res) => {
-   const userTools = {
-      { id: 'UT1', name: 'User Tool',  type: 'user-tool', color: 'lightgreen'},  
-   };
+   const userTools = [
+      { id: 'UT1', name: 'User Tool',  type: 'user-tool', color: 'lightgreen'}
+       ];
    res.json(userTools);
 });
 
