@@ -10,7 +10,7 @@ class GeneratorAgent extends Agent {
         this.outputPrompt = `You must format all of your output as a JSON object with a key value of 'chatResult'. Format 'chatResult' as a JSON list for each response item listed where each list item has the following tags: 'item' whos value is the serial number of the item; and 'text' whos value is the text of the item.`;
         this.output = [];
         this.triggered = false;
-        
+        this.listItemOutput = false;    
     }
         
     setApiKey(k) {
@@ -29,7 +29,10 @@ class GeneratorAgent extends Agent {
     getOutputPrompt() {
         return this.outputPrompt;
     }
-
+    getListItemOutput(){
+        return this.listItemOutput;
+    }
+    
     getOutput(){
         return this.output;
     }
@@ -43,7 +46,10 @@ class GeneratorAgent extends Agent {
     setOutputPrompt(p) {
         this.outputPrompt = p;
     }
-
+    setListItemOutput( l ) {
+        this.listItemOutput = l;
+    }
+    
     execute(){
         if (!this.triggered){
             this.triggered = true;
@@ -77,16 +83,18 @@ class GeneratorAgent extends Agent {
         d['outputPrompt'] = this.outputPrompt;
         d['output'] = this.output;
         d['apiKey'] = this.apiKey;
+        d['listItemOutput'] = this.listItemOutput;
         return d;
     }
     
     load(d){
         super.load(d);
-        this.systemPrompt = d['systemPrompt'];
-        this.userPrompt   = d['userPrompt'];
-        this.outputPrompt = d['outputPrompt'];
-        this.output       = d['output'];
-        this.apiKey       = d['apiKey'];        
+        this.systemPrompt   = d['systemPrompt'];
+        this.userPrompt     = d['userPrompt'];
+        this.outputPrompt   = d['outputPrompt'];
+        this.output         = d['output'];
+        this.apiKey         = d['apiKey'];        
+        this.listItemOutput = d['listItemOutput'];
     }
 
 }
