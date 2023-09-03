@@ -6,7 +6,7 @@ class ExecutionEngine {
         this.running = false;
     }
 
-    setUserName( n ) }
+    setUserName( n ) {
         console.log('ExecutionEngine: userName = ' + n);
         this.userName = n;
     }
