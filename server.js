@@ -177,7 +177,7 @@ app.post('/login', (req, res) => {
             console.log("Read User=" + user);
             myUserSession.setUserId(user._id);
             myUserSession.setUserName(username);
-            myExecutionEngine.setUser(username);
+            myExecutionEngine.setUserName(username);
             myExecutionEngine.setAgentStore(myAgentStore);
             if(user.useownkey) {
                 myUserSession.setApiKeyToUse(user.ownkey);
