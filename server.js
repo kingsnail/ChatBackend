@@ -1,25 +1,26 @@
 require('dotenv').config();
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const jwt    = require('jsonwebtoken');
 
-const AgentStore = require('./src/agent_store');
-const UserSession = require('./src/user_session');
+const AgentStore       = require('./src/agent_store');
+const UserSession      = require('./src/user_session');
+const ExecutionEngine  = require('./src/execution_engine');
     
-const GeneralAgent = require('./src/general_agent');
+const GeneralAgent   = require('./src/general_agent');
 const GeneratorAgent = require('./src/generator_agent');
 const InitiatorAgent = require('./src/initiator_agent');
-const OutputAgent = require('./src/output_agent');
-const MergeAgent = require('./src/merge_agent');
+const OutputAgent    = require('./src/output_agent');
+const MergeAgent     = require('./src/merge_agent');
 
-const express = require('express');
-const mongoose = require('mongoose');
+const express    = require('express');
+const mongoose   = require('mongoose');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+const cors       = require('cors');
 
 const app = express();
 
 myUserSession = new UserSession("no_user");
-
+myExecutionEngine = new ExecutionEngine("");
 //
 // Create the new agent store to hold all agent details.
 //
