@@ -2,18 +2,25 @@ const Agent = require('./agent');
 const OpenAIAgent = require('./ChatGPT');
 
 class GeneratorAgent extends Agent {
-    constructor(agentStore, name, displayRow, displayCol, apiKey) {
+    constructor(agentStore, name, displayRow, displayCol) {
         super(agentStore, name, displayRow, displayCol);
         this.agentType = "generator-agent";   
         this.systemPrompt = `You are a helpful assistant. Please try and follow the next instructions to the best of your ability. When asked a question, answer the question to the best of your ability.`;
         this.userPrompt = "Say this is a test";
         this.outputPrompt = `You must format all of your output as a JSON object with a key value of 'chatResult'. Format 'chatResult' as a JSON list for each response item listed where each list item has the following tags: 'item' whos value is the serial number of the item; and 'text' whos value is the text of the item.`;
-        this.apiKey = apiKey;
-        this.myAgent = new OpenAIAgent(apiKey);
+        this.apiKey = this.agentStore.getApiKey();
+        this.myAgent = new OpenAIAgent(this.apiKey);
         this.output = [];
         
     }
         
+    setApiKey(k) {
+         if (k != this.apiKey){
+              this.apiKey = k;
+              this.myAgent = new OpenAIAgent(this.apiKey);
+         }
+    }
+    
     getSystemPrompt() {
         return this.systemPrompt;
     }
