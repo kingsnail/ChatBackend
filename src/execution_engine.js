@@ -30,8 +30,8 @@ class ExecutionEngine {
         const agents = this.agentStore.getAgentIndex()
         const arr = [1, 2, 3, 8, 7];
         agents.forEach(agent => {
-            this.agentStore.getAgent(agent).execute();
             console.log("..Exec: " + agent);
+            this.agentStore.getAgent(agent).execute();
         });
     }
 
