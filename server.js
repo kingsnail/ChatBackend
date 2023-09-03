@@ -253,7 +253,12 @@ app.post('/execute', verifyToken, (req, res) => {
     console.log("/execute called with data " + JSON.stringify(req.body));
     const name = req.body.name;
     const user = myUserSession.getUserId();
-    res.json({status: "ok"});
+    if(myExecutionEngine.isRunning()){
+        myExecutionEngine.stop()
+    } else {
+        myExecutionEngine.run(); 
+    }
+    res.json({isRunning: myExecutionEngine.isRunning()});
 });
 
 
