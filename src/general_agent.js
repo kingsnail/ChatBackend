@@ -64,6 +64,7 @@ class GeneralAgent extends Agent {
             (async () => {
         
                 try{ 
+                    let opPrompt = this.outputPrompt;
                     if (this.listItemOutput){
                          opPrompt = this.outputPromptList;
                     }
