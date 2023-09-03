@@ -31,7 +31,7 @@ class AgentStore {
     }
 
     getAgentIndex(){
-         agentIndex = []
+         let agentIndex = [];
          for (const [key, value] of Object.entries(this.agentList)) {
             agentIndex.push(key);
         }
