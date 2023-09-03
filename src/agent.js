@@ -58,7 +58,7 @@ class Agent {
     }
     
     setInput(i, fromAgent) { 
-        console.log("Input is" + i + " from agent " + fromAgent);  
+        console.log("Input is" + JSON.stringify(i) + " from agent " + fromAgent);  
         this.input.push(i);
         this.inputSet = true;
     }
