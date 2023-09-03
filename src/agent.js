@@ -9,6 +9,7 @@ class Agent {
         this.subscribers = [];
         this.subscriptions = [];
         this.version = 0;
+        this.agentStore = agentStore;
         this.displayRow = displayRow;
         this.displayCol = displayCol;
         
