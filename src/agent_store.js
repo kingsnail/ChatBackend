@@ -10,7 +10,6 @@ const OutputAgent    = require('./output_agent');
 class AgentStore {
     constructor() {
         this.agentList = {};
-        this.apiKey = '';
     }
 
     /*
@@ -157,14 +156,6 @@ class AgentStore {
             sigList[ key ] = sig;
         }
         return sigList;
-    }
-
-    setApiKey( k ){
-        this.apiKey = k;
-    }
-
-    getApiKey(){
-        return this.apiKey;
     }
 }
 
