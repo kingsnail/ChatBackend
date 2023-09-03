@@ -1,4 +1,4 @@
-class ExecutuionEngine {
+class ExecutionEngine {
     constructor(userId) {
         this.userId = userId;
         this.running = false;
@@ -28,4 +28,5 @@ class ExecutuionEngine {
         this.running = false;
         console.log("Stopped");
     }
-module.exports = ExecutuionEngine;
+}
+module.exports = ExecutionEngine;
