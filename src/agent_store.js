@@ -10,8 +10,16 @@ const OutputAgent    = require('./output_agent');
 class AgentStore {
     constructor() {
         this.agentList = {};
+        this.sessionStore = null;
+    }
+    setSessionStore (s) {
+        this.sessionStore = s;
     }
 
+    getSessionStore (){
+        return this.sessionStore;    
+    }
+    
     /*
      * Check that an agent is present in the Agent Store.
      */
