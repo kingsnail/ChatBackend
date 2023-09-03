@@ -7,6 +7,7 @@ class ExecutionEngine {
     }
 
     setUserName( n ) }
+        console.log('ExecutionEngine: userName = ' + n);
         this.userName = n;
     }
 
@@ -15,6 +16,7 @@ class ExecutionEngine {
     }
 
     setAgentStore( s ){
+        console.log('ExecutionEngine: setAgentStore()');
         this.agentStore = s;
     }
     isRunning( ){
