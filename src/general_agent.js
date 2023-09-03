@@ -29,6 +29,9 @@ class GeneralAgent extends Agent {
     getOutputPrompt() {
         return this.outputPrompt;
     }
+    getListItemOutput(){
+        return this.listItemOutput;
+    }
 
     getOutput(){
         return this.output;
@@ -46,6 +49,9 @@ class GeneralAgent extends Agent {
     setOutputPrompt(p) {
         this.outputPrompt = p;
         this.version++;
+    }
+    setListItemOutput(l){
+        this.listItemOutput = l;
     }
  
     execute(){
@@ -84,15 +90,17 @@ class GeneralAgent extends Agent {
         d['outputPrompt'] = this.outputPrompt;
         d['output'] = this.output;
         d['apiKey'] = this.apiKey;
+        d['listItemOutput'] = this.listItemOutput;
         return d;
     }
     load(d){
         super.load(d);
-        this.systemPrompt = d['systemPrompt'];
-        this.userPrompt   = d['userPrompt'];
-        this.outputPrompt = d['outputPrompt'];
-        this.output       = d['output'];
-        this.apiKey       = d['apiKey'];        
+        this.systemPrompt   = d['systemPrompt'];
+        this.userPrompt     = d['userPrompt'];
+        this.outputPrompt   = d['outputPrompt'];
+        this.output         = d['output'];
+        this.apiKey         = d['apiKey'];        
+        this.listItemOutput = d['listItemOutput'];
     }
 }
 
