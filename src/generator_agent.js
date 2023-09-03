@@ -68,7 +68,7 @@ class GeneratorAgent extends Agent {
                                  {role: 'user',   content: this.userPrompt}
                                 ];
                     const choices = await myAgent.execute(msg);
-                    console.log(choices);
+                    console.log("choices=" + choices);
                     this.output.push(choices);
                     this.subscribers.forEach((x, i) => {this.agentStore.getAgent(x).setInput(choices, this.uuid);
                                                        });
