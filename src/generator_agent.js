@@ -68,9 +68,9 @@ class GeneratorAgent extends Agent {
                                  {role: 'user',   content: this.userPrompt}
                                 ];
                     const choices = await myAgent.execute(msg);
-                    console.log("choices=" + choices);
-                    this.output.push(choices);
-                    this.subscribers.forEach((x, i) => {this.agentStore.getAgent(x).setInput(choices, this.uuid);
+                    console.log("choices=" + JSON.stringify(choices));
+                    this.output.push(choices[0].message.content.chatResult);
+                    this.subscribers.forEach((x, i) => {this.agentStore.getAgent(x).setInput(JSON.stringify(choices[0].message.content.chatResult), this.uuid);
                                                        });
                 } catch (error) {
                     console.error("Failed to fetch data:", error);
