@@ -1,19 +1,22 @@
+
 class ExecutionEngine {
-    constructor(userId) {
-        this.userId = userId;
+    constructor() {
+        this.userName = '';
+        this.agentStore = null;
         this.running = false;
     }
 
-    /*
-     * Return the stored user id.
-     */
-    getUserId( ){
-        return this.userId;
+    setUserName( n ) }
+        this.userName = n;
     }
-    
-    /*
-     * Return the stored user name.
-     */
+
+    getUserName( ){
+        return this.userName;
+    }
+
+    setAgentStore( s ){
+        this.agentStore = s;
+    }
     isRunning( ){
         console.log("isRunning=" + this.running);
         return this.running;
