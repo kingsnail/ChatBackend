@@ -64,10 +64,13 @@ class GeneralAgent extends Agent {
             (async () => {
         
                 try{ 
+                    if (this.listItemOutput){
+                         opPrompt = this.outputPromptList;
+                    }
                     const apiKey = this.agentStore.getSessionStore().getApiKeyToUse();
                     const myAgent = new OpenAIAgent(apiKey);
                     const msg = [{role: 'system', content: this.systemPrompt},
-                                 {role: 'system', content: this.outputPrompt},
+                                 {role: 'system', content: opPrompt},
                                  {role: 'user',   content: this.userPrompt},
                                  nextInput
                                 ];
