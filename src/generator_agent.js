@@ -70,9 +70,10 @@ class GeneratorAgent extends Agent {
                     const choices = await myAgent.execute(msg);
                     console.log("choices[0]=" + JSON.stringify(choices[0]));
                     console.log("message=" + JSON.stringify(choices[0].message));
-                    console.log("content=" + JSON.stringify(choices[0].message.content));
-                    this.output.push(choices[0].message.content.chatResult);
-                    this.subscribers.forEach((x, i) => {this.agentStore.getAgent(x).setInput(JSON.stringify(choices[0].message.content.chatResult), this.uuid);
+                    console.log("content=" + choices[0].message.content);
+                    const content = JSON.parse(choices[0].message.content);
+                    this.output.push(content.chatResult);
+                    this.subscribers.forEach((x, i) => {this.agentStore.getAgent(x).setInput(JSON.stringify(content.chatResult), this.uuid);
                                                        });
                 } catch (error) {
                     console.error("Failed to fetch data:", error);
