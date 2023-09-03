@@ -20,7 +20,7 @@ const cors       = require('cors');
 const app = express();
 
 myUserSession = new UserSession("no_user");
-myExecutionEngine = new ExecutionEngine("");
+myExecutionEngine = new ExecutionEngine();
 //
 // Create the new agent store to hold all agent details.
 //
@@ -177,6 +177,8 @@ app.post('/login', (req, res) => {
             console.log("Read User=" + user);
             myUserSession.setUserId(user._id);
             myUserSession.setUserName(username);
+            myExecutionEngine.setUser(username);
+            myExecutionEngine.setAgentStore(myAgentStore);
             if(user.useownkey) {
                 myUserSession.setApiKeyToUse(user.ownkey);
             } else {
