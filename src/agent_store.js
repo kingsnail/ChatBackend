@@ -13,10 +13,12 @@ class AgentStore {
         this.sessionStore = null;
     }
     setSessionStore (s) {
+        console.log("AgentStore.setSessionStore()");
         this.sessionStore = s;
     }
 
-    getSessionStore (){
+    getSessionStore(){
+        console.log("AgentStore.getSessionStore()");
         return this.sessionStore;    
     }
     
