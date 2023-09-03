@@ -4,6 +4,7 @@ class ExecutionEngine {
         this.userName = '';
         this.agentStore = null;
         this.running = false;
+        this.interval = null;
     }
 
     setUserName( n ) {
@@ -24,14 +25,23 @@ class ExecutionEngine {
         return this.running;
     }
 
+    scheduler(){
+        console.log("Scheduler...");
+    }
+
     run(){
         this.running = true;
         console.log("Running");
+        this.interval = setInterval(this.scheduler.bind(this), 5000);
     }
 
     stop(){
         this.running = false;
         console.log("Stopped");
+        if (this.interval) {
+            clearInterval(this.interval);
+            console.log('Scheduler stopped.');
+        }
     }
 }
 module.exports = ExecutionEngine;
