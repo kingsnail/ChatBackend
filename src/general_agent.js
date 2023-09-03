@@ -48,7 +48,33 @@ class GeneralAgent extends Agent {
         this.outputPrompt = p;
         this.version++;
     }
-
+ 
+    execute(){
+        if (this.inputSet){
+            this.inputSet = false;
+            foreach
+            (async () => {
+        
+                try{ 
+                    const apiKey = this.agentStore.getSessionStore().getApiKeyToUse();
+                    const myAgent = new OpenAIAgent(apiKey);
+                    const msg = [{role: 'system', content: this.systemPrompt},
+                                 {role: 'system', content: this.outputPrompt},
+                                 {role: 'user',   content: this.userPrompt}
+                                ];
+                    const choices = await myAgent.execute(msg);
+                    console.log(choices);
+                    this.output.push(choices);
+                
+                } catch (error) {
+                    console.error("Failed to fetch data:", error);
+                }
+            })();
+        } else {
+              console.log("Awaiting input.");
+        }
+    }
+    
     save(){
         let d = super.save();
         d['systemPrompt'] = this.systemPrompt;
