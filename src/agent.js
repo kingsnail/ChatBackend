@@ -12,7 +12,8 @@ class Agent {
         this.agentStore = agentStore;
         this.displayRow = displayRow;
         this.displayCol = displayCol;
-        
+        this.input      = [];   
+        this.inputSet   = false;
     }
 
     getUUID() {
@@ -58,7 +59,8 @@ class Agent {
     
     setInput(i, fromAgent) { 
         console.log("Input is" + i + " from agent " + fromAgent);  
-        this.version++;
+        this.input.push(i);
+        this.inputSet = true;
     }
   
     execute() {
