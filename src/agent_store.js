@@ -30,6 +30,13 @@ class AgentStore {
          }
     }
 
+    getAgentIndex(){
+         agentIndex = []
+         for (const [key, value] of Object.entries(this.agentList)) {
+            agentIndex.push(key);
+        }
+         return agentIndex;
+    }
     /*
      * Add a new agent to the store. If it is already in the store the 
      * previous entry will be overwritten.
