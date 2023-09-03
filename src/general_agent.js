@@ -50,9 +50,11 @@ class GeneralAgent extends Agent {
     }
  
     execute(){
-        if (this.inputSet){
-            this.inputSet = false;
-            foreach
+        if (this.inputSet && this.input.length > 0 ){
+            const nextInput = {role: 'user', content: this.input.shift()};                
+            if (this.input.length == 0) {
+                this.inputSet = false;
+            }
             (async () => {
         
                 try{ 
@@ -60,7 +62,8 @@ class GeneralAgent extends Agent {
                     const myAgent = new OpenAIAgent(apiKey);
                     const msg = [{role: 'system', content: this.systemPrompt},
                                  {role: 'system', content: this.outputPrompt},
-                                 {role: 'user',   content: this.userPrompt}
+                                 {role: 'user',   content: this.userPrompt},
+                                 nextInput
                                 ];
                     const choices = await myAgent.execute(msg);
                     console.log(choices);
