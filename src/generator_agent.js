@@ -59,7 +59,7 @@ class GeneratorAgent extends Agent {
                     const choices = await myAgent.execute(msg);
                     console.log(choices);
                     this.output.push(choices);
-                    this.subscribers.forEach((x, i) => {this.agentStore.getAgent(x).setInput(choices);
+                    this.subscribers.forEach((x, i) => {this.agentStore.getAgent(x).setInput(choices, this.uuid);
                                                        });
                 } catch (error) {
                     console.error("Failed to fetch data:", error);
