@@ -309,7 +309,7 @@ app.post('/update-agent', verifyToken, (req, res) => {
         myAgentStore.getAgent(agentUUID).setSystemPrompt(req.body.systemPrompt);
         myAgentStore.getAgent(agentUUID).setUserPrompt(req.body.userPrompt);
         myAgentStore.getAgent(agentUUID).setOutputPrompt(req.body.outputPrompt);
-        myAgentStore.getAgent(agentUUID).setListItemOutput(req.body.listItemOutout);p
+        myAgentStore.getAgent(agentUUID).setListItemOutput(req.body.listItemOutput);
     } else if (agentType == "output-agent" || agentType == "merge-agent" ) {
         myAgentStore.getAgent(agentUUID).setName(req.body.name); 
     }
