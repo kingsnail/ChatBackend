@@ -48,7 +48,7 @@ class GeneratorAgent extends Agent {
         (async () => {
         
             try{ 
-                const apiKey = this.agentStore.getSessionStore().getApiKey();
+                const apiKey = this.agentStore.getSessionStore().getApiKeyToUse();
                 const myAgent = new OpenAIAgent(apiKey);
                 const msg = [{role: 'system', content: this.systemPrompt},
                              {role: 'system', content: this.outputPrompt},
