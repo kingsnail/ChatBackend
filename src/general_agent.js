@@ -95,6 +95,13 @@ class GeneralAgent extends Agent {
         }
     }
     
+    reset(){
+        super();
+        this.completionTokens = 0;
+        this.promptTokens = 0;
+        this.output = [];
+    }
+    
     save(){
         let d = super.save();
         d['systemPrompt']     = this.systemPrompt;
