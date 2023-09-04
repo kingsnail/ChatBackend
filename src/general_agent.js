@@ -97,12 +97,14 @@ class GeneralAgent extends Agent {
     
     save(){
         let d = super.save();
-        d['systemPrompt'] = this.systemPrompt;
-        d['userPrompt'] = this.userPrompt;
-        d['outputPrompt'] = this.outputPrompt;
-        d['output'] = this.output;
-        d['apiKey'] = this.apiKey;
-        d['listItemOutput'] = this.listItemOutput;
+        d['systemPrompt']     = this.systemPrompt;
+        d['userPrompt']       = this.userPrompt;
+        d['outputPrompt']     = this.outputPrompt;
+        d['output']           = this.output;
+        d['apiKey']           = this.apiKey;
+        d['listItemOutput']   = this.listItemOutput;
+        d['completionTokens'] = this.completionTokens;
+        d['promptTokens']     = this.promptTokens;
         return d;
     }
     load(d){
