@@ -16,7 +16,7 @@ class OpenAIAgent{
     
             //console.log(completion.choices);
 
-            return( completion.choices );
+            return( completion );
         
         } catch (error) {
             console.error("Error fetching data:", error);
