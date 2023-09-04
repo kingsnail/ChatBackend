@@ -12,6 +12,8 @@ class GeneratorAgent extends Agent {
         this.output = [];
         this.triggered = false;
         this.listItemOutput = false;    
+        this.completionTokens = 0;
+        this.promptTokens = 0;
     }
         
     setApiKey(k) {
@@ -67,7 +69,12 @@ class GeneratorAgent extends Agent {
                                  {role: 'system', content: opPrompt},
                                  {role: 'user',   content: this.userPrompt}
                                 ];
-                    const choices = await myAgent.execute(msg);
+                    const completion = await myAgent.execute(msg);
+                    const choices = completion.choices;
+                    const completionTokens = usage['completion_tokens'];
+                    const propmtTokens     = usage['prompt_tokens'];
+                    this.completionTokens  = this.completionTokens + completionTokens;
+                    this.promptTokens      = this.promptTokens + promptTokens;
                     console.log("choices[0]=" + JSON.stringify(choices[0]));
                     console.log("message=" + JSON.stringify(choices[0].message));
                     console.log("content=" + choices[0].message.content);
@@ -93,12 +100,14 @@ class GeneratorAgent extends Agent {
 
     save(){
         let d = super.save();
-        d['systemPrompt'] = this.systemPrompt;
-        d['userPrompt'] = this.userPrompt;
-        d['outputPrompt'] = this.outputPrompt;
-        d['output'] = this.output;
-        d['apiKey'] = this.apiKey;
-        d['listItemOutput'] = this.listItemOutput;
+        d['systemPrompt']     = this.systemPrompt;
+        d['userPrompt']       = this.userPrompt;
+        d['outputPrompt']     = this.outputPrompt;
+        d['output']           = this.output;
+        d['apiKey']           = this.apiKey;
+        d['listItemOutput']   = this.listItemOutput;
+        d['completionTokens'] = this.completionTokens;
+        d['promptTokens']     = this.promptTokens;
         return d;
     }
     
