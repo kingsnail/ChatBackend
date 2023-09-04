@@ -67,6 +67,10 @@ class Agent {
         console.log(`${this.name} executes.`);
     }
 
+    reset() {
+        this.input = [];
+    }
+    
     subscribe(s) {
         this.subscribers.push(s);
         console.log('Subscribe');
