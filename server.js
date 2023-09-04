@@ -264,6 +264,16 @@ app.post('/execute', verifyToken, (req, res) => {
     res.json({isRunning: myExecutionEngine.isRunning()});
 });
 
+/********************************
+ *           /reset-execution   *
+ ********************************/
+app.post('/reset-execution', verifyToken, (req, res) => {
+    console.log("/reset-execution called with data " + JSON.stringify(req.body));
+    const name = req.body.name;
+    const user = myUserSession.getUserId();
+    myExecutionEngine.reset();
+    res.json({status: "ok"});
+});
 
 /********************************
  *           /load              *
