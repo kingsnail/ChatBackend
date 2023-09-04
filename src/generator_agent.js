@@ -98,6 +98,14 @@ class GeneratorAgent extends Agent {
         }
     }
 
+    reset(){
+        super();
+        this.completionTokens = 0;
+        this.promptTokens = 0;
+        this.output = [];
+        this.triggered = false;
+    }
+    
     save(){
         let d = super.save();
         d['systemPrompt']     = this.systemPrompt;
