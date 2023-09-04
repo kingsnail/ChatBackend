@@ -77,7 +77,12 @@ class GeneralAgent extends Agent {
                                  {role: 'user',   content: this.userPrompt},
                                  nextInput
                                 ];
-                    const choices = await myAgent.execute(msg);
+                    const completion = await myAgent.execute(msg);
+                    const choices = completion.choices;
+                    const completionTokens = usage['completion_tokens'];
+                    const propmtTokens     = usage['prompt_tokens'];
+                    this.completionTokens  = this.completionTokens + completionTokens;
+                    this.promptTokens      = this.promptTokens + promptTokens;
                     console.log(choices);
                     this.output.push(choices);
                 
