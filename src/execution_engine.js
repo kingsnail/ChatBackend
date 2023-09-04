@@ -28,7 +28,6 @@ class ExecutionEngine {
     scheduler(){
         console.log("Scheduler...");
         const agents = this.agentStore.getAgentIndex()
-        const arr = [1, 2, 3, 8, 7];
         agents.forEach(agent => {
             console.log("..Exec: " + agent);
             this.agentStore.getAgent(agent).execute();
@@ -48,6 +47,14 @@ class ExecutionEngine {
             clearInterval(this.interval);
             console.log('Scheduler stopped.');
         }
+    }
+    reset(){
+        console.log("Reset");
+        const agents = this.agentStore.getAgentIndex()
+        agents.forEach(agent => {
+            console.log("..Reset: " + agent);
+            this.agentStore.getAgent(agent).reset();
+        });
     }
 }
 module.exports = ExecutionEngine;
