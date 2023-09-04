@@ -271,6 +271,9 @@ app.post('/reset-execution', verifyToken, (req, res) => {
     console.log("/reset-execution called with data " + JSON.stringify(req.body));
     const name = req.body.name;
     const user = myUserSession.getUserId();
+    if(myExecutionEngine.isRunning()){
+        myExecutionEngine.stop()
+    }
     myExecutionEngine.reset();
     res.json({status: "ok"});
 });
