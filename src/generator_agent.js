@@ -99,7 +99,7 @@ class GeneratorAgent extends Agent {
     }
 
     reset(){
-        super();
+        super.reset();
         this.completionTokens = 0;
         this.promptTokens = 0;
         this.output = [];
