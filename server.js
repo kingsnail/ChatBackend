@@ -94,7 +94,8 @@ const userSchema = new mongoose.Schema({
     password:   { type: String, required: true },
     useownkey:  { type: Boolean, required: true, default: false},
     ownkey:     { type: String, required: false},
-    tokensused: { type: Number, required: true, default: 0}
+    tokensused: { type: Number, required: true, default: 0},
+    tokenlimit: { type: Number, required: true, default: 0}
 });
 
 const User = mongoose.model('User', userSchema);
