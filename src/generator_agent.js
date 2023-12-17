@@ -54,6 +54,7 @@ class GeneratorAgent extends Agent {
     }
     
     execute(){
+        super.execute();
         if (!this.triggered){
             this.triggered = true;
             (async () => {
