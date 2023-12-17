@@ -162,9 +162,9 @@ async function createUser( u, e, p, k, ok, t){
     }
 }
 
-console.log("Creating Users...");
-createUser("markp", "markpearce47@gmail.com", "4543mark", false, '', 0 );
-createUser("lewis", "lewisbrereton@outlook.com", "tfx2309", false, '', 0 );
+//console.log("Creating Users...");
+//createUser("markp", "markpearce47@gmail.com", "4543mark", false, '', 0 );
+//createUser("lewis", "lewisbrereton@outlook.com", "tfx2309", false, '', 0 );
 
 /********************************
  *           /login             *
@@ -254,8 +254,7 @@ app.post('/list-datasets', verifyToken, (req, res) => {
  *           /execute           *
  ********************************/
 app.post('/execute', verifyToken, (req, res) => {
-    console.log("/execute called with data " + JSON.stringify(req.body));
-    const name = req.body.name;
+    console.log("/execute called.");
     const user = myUserSession.getUserId();
     if(myExecutionEngine.isRunning()){
         myExecutionEngine.stop()
