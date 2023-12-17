@@ -8,11 +8,12 @@ class ExecutionEngine {
     }
 
     setUserName( n ) {
-        console.log('ExecutionEngine: userName = ' + n);
+        console.log('ExecutionEngine: setUserName(' + n + ')');
         this.userName = n;
     }
 
     getUserName( ){
+        console.log('ExecutionEnginer: getUserName() = ' + this.userName );
         return this.userName;
     }
 
@@ -29,7 +30,7 @@ class ExecutionEngine {
         console.log("Scheduler...");
         const agents = this.agentStore.getAgentIndex()
         agents.forEach(agent => {
-            console.log("..Exec: " + agent);
+            console.log("..Exec: " + this.agentStore.getAgent(agent).getName());
             this.agentStore.getAgent(agent).execute();
         });
     }
