@@ -58,6 +58,7 @@ class GeneralAgent extends Agent {
     }
  
     execute(){
+        super.execute();
         if (this.inputSet && this.input.length > 0 ){
             const nextInput = {role: 'user', content: this.input.shift()};                
             if (this.input.length == 0) {
