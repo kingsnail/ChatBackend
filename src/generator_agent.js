@@ -80,7 +80,7 @@ class GeneratorAgent extends Agent {
                     console.log("message=" + JSON.stringify(choices[0].message));
                     console.log("content=" + choices[0].message.content);
                     const content = JSON.parse(choices[0].message.content);
-                    if (content.chatResult.isArray()){
+                    if (Array.isArray(content.chatResult)){
                         content.chatResult.forEach((x, i) => {this.output.push(x)});
                     } else {
                         this.output.push(content.chatResult);
