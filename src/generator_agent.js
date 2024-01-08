@@ -73,7 +73,7 @@ class GeneratorAgent extends Agent {
                     const completion = await myAgent.execute(msg);
                     const choices = completion.choices;
                     const completionTokens = completion.usage['completion_tokens'];
-                    const propmtTokens     = completion.usage['prompt_tokens'];
+                    const promptTokens     = completion.usage['prompt_tokens'];
                     this.completionTokens  = this.completionTokens + completionTokens;
                     this.promptTokens      = this.promptTokens + promptTokens;
                     console.log("choices[0]=" + JSON.stringify(choices[0]));
