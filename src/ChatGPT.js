@@ -14,7 +14,7 @@ class OpenAIAgent{
                 model: 'gpt-3.5-turbo',
             });
     
-            console.log(completion.choices);
+            console.log(completion);
 
             return( completion );
         
