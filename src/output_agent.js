@@ -5,7 +5,12 @@ class OutputAgent extends Agent {
         super(agentStore, name, displayRow, displayCol);
         this.agentType = "output-agent";   
     }
-        
+
+    setInput(i, fromAgent) {
+        super.setInput(i, fromAgent);
+        this.output = this.input;
+    }
+    
 }
 
 module.exports = OutputAgent;
