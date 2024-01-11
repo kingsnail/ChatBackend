@@ -76,6 +76,7 @@ class GeneratorAgent extends Agent {
                     const promptTokens     = completion.usage['prompt_tokens'];
                     this.completionTokens  = this.completionTokens + completionTokens;
                     this.promptTokens      = this.promptTokens + promptTokens;
+                    this.version           = this.version + 1;
                     console.log("choices[0]=" + JSON.stringify(choices[0]));
                     console.log("message=" + JSON.stringify(choices[0].message));
                     console.log("content=" + choices[0].message.content);
