@@ -82,6 +82,7 @@ class GeneralAgent extends Agent {
                     const choices = completion.choices;
                     const completionTokens = usage['completion_tokens'];
                     const propmtTokens     = usage['prompt_tokens'];
+                    this.version           = this.version + 1;
                     this.completionTokens  = this.completionTokens + completionTokens;
                     this.promptTokens      = this.promptTokens + promptTokens;
                     console.log(choices);
