@@ -3,7 +3,7 @@ const Agent = require('./agent');
 const OpenAIAgent = require('./ChatGPT');
 
 class GeneralAgent extends Agent {
-    constructor(agentStore, name, displayRow, displayCol) {
+    constructor(agentStore, name, displayRow, displayCol, apiKey) {
         super(agentStore, name, displayRow, displayCol);
         this.agentType = "standard-agent";
         this.systemPrompt = `You are a helpful assistant. Please try and follow the next instructions to the best of your ability. When asked a question, answer the question to the best of your ability.`;
@@ -14,13 +14,8 @@ class GeneralAgent extends Agent {
         this.listItemOutput = false;
         this.completionTokens = 0;
         this.promptTokens = 0;
-    }
-
-    setApiKey(k) {
-         if (k != this.apiKey){
-              this.apiKey = k;
-              this.myAgent = new OpenAIAgent(this.apiKey);
-         }
+        this.apiKey = apiKey;
+        this.myAgent = new OpenAIAgent(this.apiKey);
     }
     
     getSystemPrompt() {
