@@ -117,7 +117,7 @@ async function updateUserDetails( apiKey, useKey, tokenLimit, user){
 
     User.updateOne(filter, update).exec()
        .then(result => {
-           console.log('User Record updated successfully: TL = ' + tokenLimit);
+           console.log('User Record updated successfully.');
        })
        .catch(err => {
            console.error(err);
