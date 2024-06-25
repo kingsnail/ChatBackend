@@ -117,7 +117,7 @@ async function updateUserDetails( apiKey, useKey, tokenLimit, user){
 
     User.updateOne(filter, update).exec()
        .then(result => {
-           console.log('User Record updated successfully');
+           console.log('User Record updated successfully: TL = ' + tokenLimit);
        })
        .catch(err => {
            console.error(err);
@@ -363,7 +363,7 @@ app.post('/update-user-settings', verifyToken, (req, res) => {
     console.log("/update-user-settings" + JSON.stringify(req.body));
     const apiKey = req.body.apiKey;
     const useOwnKey = req.body.useOwnApiKey;
-    const tokenLimit = req.body.tokenlimit;
+    const tokenLimit = req.body.tokenLimit;
     getUser( myUserSession.getUserName() ).then( (userRecord) => {
         if (userRecord){
            userRecord.ownkey = apiKey;
