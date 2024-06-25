@@ -4,7 +4,7 @@ class OpenAIAgent{
     constructor(apiKey){
         this.apiKey = apiKey;
         this.openai = new OpenAI({apiKey: this.apiKey});
-        console.log("New Agent with key: " + this.apiKey;
+        console.log("New Agent with key: " + this.apiKey);
     }
 
     async execute(msg){
