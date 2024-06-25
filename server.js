@@ -111,13 +111,13 @@ async function getUser( username ){
     }
 }
 
-async function updateUserDetails( apiKey, useKey, user){
+async function updateUserDetails( apiKey, useKey, tokenLimit, user){
     const filter = { username: user };
-    const update = { $set: { ownkey: apiKey, useownkey: useKey } };
+    const update = { $set: { ownkey: apiKey, useownkey: useKey, tokenlimit: tokenLimit } };
 
     User.updateOne(filter, update).exec()
        .then(result => {
-           console.log('Document updated successfully');
+           console.log('User Record updated successfully');
        })
        .catch(err => {
            console.error(err);
@@ -363,11 +363,12 @@ app.post('/update-user-settings', verifyToken, (req, res) => {
     console.log("/update-user-settings" + JSON.stringify(req.body));
     const apiKey = req.body.apiKey;
     const useOwnKey = req.body.useOwnApiKey;
+    const tokenLimit = req.body.tokenlimit;
     getUser( myUserSession.getUserName() ).then( (userRecord) => {
         if (userRecord){
            userRecord.ownkey = apiKey;
            userRecord.useownkey = useOwnKey;
-           updateUserDetails( apiKey, useOwnKey, myUserSession.getUserName()).then(() => {
+           updateUserDetails( apiKey, useOwnKey,tokenLimit, myUserSession.getUserName()).then(() => {
                 if(userRecord.useownkey) {
                     myUserSession.setApiKeyToUse(userRecord.ownkey);
                 } else {
