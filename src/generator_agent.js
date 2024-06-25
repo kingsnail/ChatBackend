@@ -19,6 +19,7 @@ class GeneratorAgent extends Agent {
     setApiKey(k) {
          if (k != this.apiKey){
               this.apiKey = k;
+             console.log("API Key = " + k);
               this.myAgent = new OpenAIAgent(this.apiKey);
          }
     }
