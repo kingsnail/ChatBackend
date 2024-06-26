@@ -514,6 +514,15 @@ app.post('/drop-cell', verifyToken, (req, res) => {
           name:      newAgent.getName(),
           signature: newAgent.getSignature()
       });
+  } else if (receivedAgent == "input-agent"){
+      const newAgent = new InputAgent(myAgentStore, receivedAgent, receivedRow, receivedCol);
+      myAgentStore.add(newAgent);
+      res.json({
+          uuid:      newAgent.getUUID(),
+          type:      newAgent.getType(),
+          name:      newAgent.getName(),
+          signature: newAgent.getSignature()
+      });      
   } else if (receivedAgent == "output-agent"){
       const newAgent = new OutputAgent(myAgentStore, receivedAgent, receivedRow, receivedCol);
       myAgentStore.add(newAgent);
