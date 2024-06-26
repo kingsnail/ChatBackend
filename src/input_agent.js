@@ -14,7 +14,7 @@ class InputAgent extends Agent {
         this.version++;
     }
 
-    setTestInput(t) {
+    setTextInput(t) {
         this.textInput = t;
         super.setInput(t);
         this.version++;
