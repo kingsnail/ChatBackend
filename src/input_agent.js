@@ -6,12 +6,20 @@ class InputAgent extends Agent {
         this.agentType = "input-agent";
         this.inputType = "text";
         this.inputSet  = false;
+        this.textInput = "";
     }
 
     setInputType(t) {
         this.inputType = t;
         this.version++;
     }
+
+    setTestInput(t) {
+        this.textInput = t;
+        super.setInput(t);
+        this.version++;
+    }
+
 
   execute(){
         super.execute();
@@ -37,11 +45,13 @@ class InputAgent extends Agent {
     save(){
         let d = super.save();
         d['inputType']     = this.inputType;
+        d['textInput']     = this.textInput;
         return d;
     }
     load(d){
         super.load(d);
         this.inputType   = d['inputType'];
+        this.textInput   = d['textInput'];
     }
 }
 
