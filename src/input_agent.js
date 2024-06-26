@@ -26,7 +26,8 @@ class InputAgent extends Agent {
         super.execute();
         console.log("Input = " + this.input);
         if (this.inputSet && this.input.length > 0 ){
-            const nextInput = {role: 'user', content: this.input.shift()};                
+            const nextInput = {role: 'user', content: this.input.shift()};    
+            console.log("nextInput=" + JSON.stringify(nextInput));
             if (this.input.length == 0) {
                 this.inputSet = false;
             }
