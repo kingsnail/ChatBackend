@@ -7,6 +7,7 @@ class InputAgent extends Agent {
         this.inputType = "text";
         this.inputSet  = false;
         this.textInput = "";
+        this.output = [];
     }
 
     setInputType(t) {
