@@ -23,7 +23,4 @@ class InputAgent extends Agent {
     }
 }
 
-    
-}
-
 module.exports = InputAgent;
