@@ -6,7 +6,12 @@ class InputAgent extends Agent {
         this.agentType = "input-agent";
         this.inputType = "Text";
     }
-        
+
+setInputType(t) {
+        this.inputType = t;
+        this.version++;
+    }
+
 }
 
 module.exports = InputAgent;
