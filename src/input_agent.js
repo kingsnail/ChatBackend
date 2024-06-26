@@ -5,6 +5,7 @@ class InputAgent extends Agent {
         super(agentStore, name, displayRow, displayCol);
         this.agentType = "input-agent";
         this.inputType = "text";
+        this.inputAvailable = false;
     }
 
     setInputType(t) {
