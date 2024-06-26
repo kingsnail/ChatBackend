@@ -20,34 +20,8 @@ class InputAgent extends Agent {
             if (this.input.length == 0) {
                 this.inputSet = false;
             }
-            (async () => {
-        
-                try{ 
-                    let opPrompt = this.outputPrompt;
-                    if (this.listItemOutput){
-                         opPrompt = this.outputPromptList;
-                    }
-                    const apiKey = this.agentStore.getSessionStore().getApiKeyToUse();
-                    const myAgent = new OpenAIAgent(apiKey);
-                    const msg = [{role: 'system', content: this.systemPrompt},
-                                 {role: 'system', content: opPrompt},
-                                 {role: 'user',   content: this.userPrompt},
-                                 nextInput
-                                ];
-                    const completion = await myAgent.execute(msg);
-                    const choices = completion.choices;
-                    const completionTokens = usage['completion_tokens'];
-                    const propmtTokens     = usage['prompt_tokens'];
-                    this.version           = this.version + 1;
-                    this.completionTokens  = this.completionTokens + completionTokens;
-                    this.promptTokens      = this.promptTokens + promptTokens;
-                    console.log(choices);
-                    this.output.push(choices);
-                
-                } catch (error) {
-                    console.error("Failed to fetch data:", error);
-                }
-            })();
+            this.version = this.version + 1;
+            this.output.push(nextInput);                                
         } else {
               console.log("Awaiting input.");
         }
