@@ -324,9 +324,12 @@ app.post('/update-agent', verifyToken, (req, res) => {
         myAgentStore.getAgent(agentUUID).setUserPrompt(req.body.userPrompt);
         myAgentStore.getAgent(agentUUID).setOutputPrompt(req.body.outputPrompt);
         myAgentStore.getAgent(agentUUID).setListItemOutput(req.body.listItemOutput);
+    } else if (agentType == "input-agent" ){
+        myAgentStore.getAgent(agentUUID).setName(req.body.name);
+        myAgentStore.getAgent(agentUUID).setInputType(req.body.inputType);
     } else if (agentType == "output-agent" || agentType == "merge-agent" ) {
         myAgentStore.getAgent(agentUUID).setName(req.body.name); 
-    }
+    } 
     res.json({
           version:   myAgentStore.getAgent(agentUUID).getVersion(),
           signature: myAgentStore.getAgent(agentUUID).getSignature()
