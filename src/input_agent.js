@@ -32,8 +32,8 @@ class InputAgent extends Agent {
                 this.inputSet = false;
             }
             this.version = this.version + 1;
-            this.output.push(this.nextInput);     
-            console.log("pushing: " + this.nextInput);
+            this.output.push(JSON.stringify(this.nextInput));     
+            console.log("pushing: " + JSON.stringify(this.nextInput));
             this.output.forEach((op, i) => {
                 this.subscribers.forEach((x, j) => {this.agentStore.getAgent(x).setInput(JSON.stringify(op), this.uuid);
                 });
