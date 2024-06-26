@@ -4,6 +4,7 @@ class OutputAgent extends Agent {
     constructor(agentStore, name, displayRow, displayCol) {
         super(agentStore, name, displayRow, displayCol);
         this.agentType = "output-agent";   
+        this.output    = [];
     }
 
     setInput(i, fromAgent) {
