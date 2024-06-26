@@ -11,6 +11,7 @@ const GeneratorAgent = require('./src/generator_agent');
 const InitiatorAgent = require('./src/initiator_agent');
 const OutputAgent    = require('./src/output_agent');
 const MergeAgent     = require('./src/merge_agent');
+const InputAgent     = require('./src/input_agent');
 
 const express    = require('express');
 const mongoose   = require('mongoose');
