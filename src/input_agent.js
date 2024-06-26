@@ -5,7 +5,6 @@ class InputAgent extends Agent {
         super(agentStore, name, displayRow, displayCol);
         this.agentType = "input-agent";
         this.inputType = "text";
-        this.inputSet  = false;
         this.textInput = "";
         this.output = [];
     }
@@ -18,7 +17,7 @@ class InputAgent extends Agent {
     setTextInput(t) {
         console.log("Setting input agent text to : " + t);
         this.textInput = t;
-        super.setInput(t);
+        super.setInput(t, this.UUID);
         this.version++;
     }
 
