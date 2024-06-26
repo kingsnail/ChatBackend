@@ -327,6 +327,7 @@ app.post('/update-agent', verifyToken, (req, res) => {
     } else if (agentType == "input-agent" ){
         myAgentStore.getAgent(agentUUID).setName(req.body.name);
         myAgentStore.getAgent(agentUUID).setInputType(req.body.inputType);
+        myAgentStore.getAgent(agentUUID).setTextInput(req.body.textInput);
     } else if (agentType == "output-agent" || agentType == "merge-agent" ) {
         myAgentStore.getAgent(agentUUID).setName(req.body.name); 
     } 
