@@ -14,17 +14,12 @@ class InputAgent extends Agent {
 
     save(){
         let d = super.save();
-        
+        d['inputType']     = this.inputType;
         return d;
     }
     load(d){
         super.load(d);
-        this.systemPrompt   = d['systemPrompt'];
-        this.userPrompt     = d['userPrompt'];
-        this.outputPrompt   = d['outputPrompt'];
-        this.output         = d['output'];
-        this.apiKey         = d['apiKey'];        
-        this.listItemOutput = d['listItemOutput'];
+        this.inputType   = d['inputType'];
     }
 }
 
