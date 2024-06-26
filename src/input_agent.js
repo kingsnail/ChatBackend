@@ -30,7 +30,8 @@ class InputAgent extends Agent {
                 this.inputSet = false;
             }
             this.version = this.version + 1;
-            this.output.push(this.nextInput);                                
+            this.output.push(this.nextInput);     
+            console.log("pushing: " + this.nextInput);
         } else {
               console.log("Awaiting input.");
         }
