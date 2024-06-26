@@ -26,14 +26,14 @@ class InputAgent extends Agent {
         super.execute();
         console.log("Input = " + this.input);
         if (this.inputSet && this.input.length > 0 ){
-            const nextInput = {role: 'user', content: this.input.shift()};    
+            const nextInput = this.input.shift();    
             console.log("nextInput=" + JSON.stringify(nextInput));
             if (this.input.length == 0) {
                 this.inputSet = false;
             }
             this.version = this.version + 1;
-            this.output.push(JSON.stringify(nextInput));     
-            console.log("pushing: " + JSON.stringify(nextInput));
+            this.output.push(nextInput);     
+            console.log("pushing: " + nextInput);
             this.output.forEach((op, i) => {
                 this.subscribers.forEach((x, j) => {this.agentStore.getAgent(x).setInput(JSON.stringify(op), this.uuid);
                 });
