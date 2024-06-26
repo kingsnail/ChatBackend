@@ -16,6 +16,7 @@ class InputAgent extends Agent {
     }
 
     setTextInput(t) {
+        console.log("Setting input agent text to : " + t);
         this.textInput = t;
         super.setInput(t);
         this.version++;
@@ -24,6 +25,7 @@ class InputAgent extends Agent {
 
   execute(){
         super.execute();
+        console.log("Input = " + this.input);
         if (this.inputSet && this.input.length > 0 ){
             const nextInput = {role: 'user', content: this.input.shift()};                
             if (this.input.length == 0) {
