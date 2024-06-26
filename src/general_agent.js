@@ -82,7 +82,11 @@ class GeneralAgent extends Agent {
                     this.promptTokens      = this.promptTokens + promptTokens;
                     console.log(choices);
                     this.output.push(choices);
-                
+                    this.output.forEach((op, i) => {
+                        this.subscribers.forEach((x, j) => {this.agentStore.getAgent(x).setInput(JSON.stringify(op), this.uuid);
+                        });
+                    });
+
                 } catch (error) {
                     console.error("Failed to fetch data:", error);
                 }
