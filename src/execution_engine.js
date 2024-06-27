@@ -13,7 +13,7 @@ class ExecutionEngine {
     }
 
     getUserName( ){
-        console.log('ExecutionEnginer: getUserName() = ' + this.userName );
+        console.log('ExecutionEngine: getUserName() = ' + this.userName );
         return this.userName;
     }
 
