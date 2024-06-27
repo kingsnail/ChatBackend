@@ -54,6 +54,7 @@ class GeneralAgent extends Agent {
  
     execute(){
         super.execute();
+        tokensUsed = 0;
         if (this.inputSet && this.input.length > 0 ){
             const nextInput = {role: 'user', content: this.input.shift()};                
             if (this.input.length == 0) {
@@ -77,6 +78,10 @@ class GeneralAgent extends Agent {
                     const choices = completion.choices;
                     const completionTokens = completion.usage['completion_tokens'];
                     const promptTokens     = completion.usage['prompt_tokens'];
+                    tokensUsed             = promptTokens + completionTokens;
+                
+                    // TODO Update the user's total token usage.
+                    
                     this.version           = this.version + 1;
                     this.completionTokens  = this.completionTokens + completionTokens;
                     this.promptTokens      = this.promptTokens + promptTokens;
@@ -94,6 +99,7 @@ class GeneralAgent extends Agent {
         } else {
               console.log("Awaiting input.");
         }
+        return tokensUsed;
     }
     
     reset(){
