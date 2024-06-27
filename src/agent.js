@@ -65,6 +65,7 @@ class Agent {
   
     execute() {
         console.log(`${this.name} executes.`);
+        return( 0 );
     }
 
     reset() {
