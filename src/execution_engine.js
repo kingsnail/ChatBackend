@@ -30,6 +30,7 @@ class ExecutionEngine {
         console.log("Scheduler...");
         const agents = this.agentStore.getAgentIndex()
         agents.forEach(agent => {
+            console.log("==========================================");
             console.log("..Exec: " + this.agentStore.getAgent(agent).getName());
             let t = this.agentStore.getAgent(agent).execute();
             console.log("Tokens Used: " + t );
