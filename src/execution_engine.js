@@ -31,7 +31,7 @@ class ExecutionEngine {
         const agents = this.agentStore.getAgentIndex()
         agents.forEach(agent => {
             console.log("..Exec: " + this.agentStore.getAgent(agent).getName());
-            t = this.agentStore.getAgent(agent).execute();
+            let t = this.agentStore.getAgent(agent).execute();
             console.log("Tokens Used: " + t );
         });
     }
