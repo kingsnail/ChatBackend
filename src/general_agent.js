@@ -79,7 +79,7 @@ class GeneralAgent extends Agent {
                     const completionTokens = completion.usage['completion_tokens'];
                     const promptTokens     = completion.usage['prompt_tokens'];
                     tokensUsed             = promptTokens + completionTokens;
-                
+                    console.log("tokensUsed updated: " + tokensUsed);
                     // TODO Update the user's total token usage.
                     
                     this.version           = this.version + 1;
@@ -99,6 +99,7 @@ class GeneralAgent extends Agent {
         } else {
               console.log("Awaiting input.");
         }
+        console.log("returning " + tokensUsed);
         return tokensUsed;
     }
     
